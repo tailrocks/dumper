@@ -1,7 +1,6 @@
 ### TYPES
 
 type User {
-  id: ID!
   username: String!
   email: String!
   firstName: String!
@@ -9,7 +8,6 @@ type User {
 }
 
 type Database {
-  id: ID!
   name: String!
   host: String!
   port: Int!
@@ -18,4 +16,38 @@ type Database {
   environment: String!
   description: String!
   subDatabases: [Database!]!
+}
+
+type Table {
+  name: String!
+  columns: [TableColumn!]!
+}
+
+type TableColumn {
+  name: String!
+  # column type
+  kind: String!
+}
+
+type TableContentPayloadData {
+  rows: [TableRow!]!
+  columns: [TableColumn!]!
+}
+
+type TableRow {
+  primaryKey: [FieldValue!]!
+  values: [String!]!
+}
+
+type FieldValue {
+  field: String!
+  value: String!
+}
+
+type ExportDeclaration {
+  date: LocalDateTime!
+  exporter: User!
+  status: ExportDeclarationStatus!
+  description: String!
+  destination: ExportDeclarationDestination!
 }

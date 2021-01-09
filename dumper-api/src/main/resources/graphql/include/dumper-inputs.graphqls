@@ -1,5 +1,30 @@
 ### INPUT
 
+## Query
+
+input TableListInput {
+  databaseName: String!
+  tableName: String!
+}
+
+input TableInput {
+  databaseName: String!
+  tableName: String!
+}
+
+input TableContentInput {
+  databaseName: String!
+  tableName: String!
+  filters: [TableContentFilterInput!]
+}
+
+input TableContentFilterInput {
+  field: String
+  value: String
+}
+
+## Mutation
+
 input UserLoginInput {
   username: String!
   password: String!
@@ -23,4 +48,23 @@ input DatabaseCreateInput {
   dbname: String!
   environment: String!
   description: String!
+}
+
+input ExportDeclarationCreateInput {
+  description: String!
+  destination: ExportDeclarationDestination!
+  sourceDatabaseName: String!
+  targetDatabaseName: String
+  items: [ExportItemInput!]!
+}
+
+input ExportItemInput {
+  sourceTableName: String!
+  sourcePrimaryKey: [FieldValueInput!]!
+  overrideValues: [FieldValueInput!]!
+}
+
+input FieldValueInput {
+  field: String!
+  value: String!
 }

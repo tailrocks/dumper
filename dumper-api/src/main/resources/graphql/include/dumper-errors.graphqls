@@ -25,11 +25,15 @@ type SecurityError {
 
 union UserCurrentPayloadError = SecurityError
 union UserListPayloadError = SecurityError
+union DatabaseListPayloadError = SecurityError
+union TableListPayloadError = SecurityError
+union TableContentPayloadError = SecurityError
+union ExportDeclarationListError = SecurityError
 
 ## Mutation
 
 union LoginPayloadError = LoginError
 union LogoutPayloadError = SecurityError
 union UserCreatePayloadError = SecurityError
-union DatabaseListPayloadError = SecurityError
 union DatabaseCreatePayloadError = SecurityError
+union ExportDeclarationCreatePayloadError = SecurityError

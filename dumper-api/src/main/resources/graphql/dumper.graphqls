@@ -17,6 +17,14 @@ type Query {
   userList: UserListPayload!
 
   databaseList: DatabaseListPayload!
+
+  tableList(input: TableListInput!): TableListPayload!
+
+  table(input: TableInput!): TablePayload!
+
+  tableContent(input: TableContentInput!): TableContentPayload!
+
+  exportDeclarationList: ExportDeclarationListPayload!
 }
 
 type Mutation {
@@ -27,4 +35,6 @@ type Mutation {
   userCreate(input: UserCreateInput!): UserCreatePayload!
 
   databaseCreate(input: DatabaseCreateInput!): DatabaseCreatePayload!
+
+  exportDeclarationCreate(input: ExportDeclarationCreateInput!): ExportDeclarationCreatePayload!
 }

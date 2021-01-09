@@ -1,0 +1,12 @@
+### ENUMS
+
+enum ExportDeclarationStatus {
+  PENDING
+  DONE
+  ERROR
+}
+
+enum ExportDeclarationDestination {
+  JSON
+  DATABASE
+}

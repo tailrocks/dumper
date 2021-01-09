@@ -17,6 +17,26 @@ type DatabaseListPayload {
   error: DatabaseListPayloadError
 }
 
+type TableListPayload {
+  data: [Table!]!
+  error: TableListPayloadError
+}
+
+type TablePayload {
+  data: Table
+  error: TableListPayloadError
+}
+
+type TableContentPayload {
+  data: TableContentPayloadData
+  error: TableContentPayloadError
+}
+
+type ExportDeclarationListPayload {
+  data: [ExportDeclaration!]!
+  error: ExportDeclarationListError
+}
+
 ## Mutation
 
 type UserLoginPayload {
@@ -36,4 +56,9 @@ type UserCreatePayload {
 type DatabaseCreatePayload {
   data: Database
   error: DatabaseCreatePayloadError
+}
+
+type ExportDeclarationCreatePayload {
+  data: ExportDeclaration
+  error: ExportDeclarationCreatePayloadError
 }
