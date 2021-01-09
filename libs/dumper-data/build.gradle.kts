@@ -86,7 +86,7 @@ jooq {
                         isFluentSetters = true
                     }
                     target.apply {
-                        packageName = "com.zhokhov.dumper.jooq"
+                        packageName = "com.zhokhov.dumper.data.jooq"
                     }
                     strategy.name = "org.jooq.codegen.DefaultGeneratorStrategy"
                 }

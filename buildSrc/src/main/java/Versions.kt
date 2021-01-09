@@ -53,5 +53,6 @@ object Versions {
     // Project
 
     const val jambalayaChecks = "0.1.1"
+    const val jambalayaChecksJooq = "0.1.0"
 
 }
