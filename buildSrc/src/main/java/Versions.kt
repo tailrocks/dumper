@@ -16,7 +16,10 @@ object Versions {
     const val gradleBintrayPlugin = "1.8.5"
 
     // https://plugins.gradle.org/plugin/com.diffplug.spotless
-    const val gradleSpotlessPlugin = "5.8.2"
+    const val gradleSpotlessPlugin = "5.9.0"
+
+    // https://plugins.gradle.org/plugin/nu.studer.jooq
+    const val gradleJooqPlugin = "5.2"
 
     // https://plugins.gradle.org/plugin/com.github.johnrengelman.shadow
     const val gradleShadowPlugin = "6.1.0"
