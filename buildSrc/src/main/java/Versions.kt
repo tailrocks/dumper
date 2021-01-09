@@ -53,7 +53,7 @@ object Versions {
     const val junit = "5.6.2"
     const val slugify = "2.4"
     const val graphQlDateTime = "3.0.0"
-    const val graphQlTools = "6.2.0"
+    const val graphQlTools = "11.0.0"
 
     const val jambalayaChecks = "0.1.1"
     const val jambalayaChecksJooq = "0.1.0"

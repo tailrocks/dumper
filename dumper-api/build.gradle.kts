@@ -46,7 +46,7 @@ gitProperties {
 }
 
 application {
-    mainClass.set("com.polusharie.graphql.GraphQlApplication")
+    mainClass.set("com.zhokhov.dumper.api.ApiApplication")
 }
 
 tasks {
