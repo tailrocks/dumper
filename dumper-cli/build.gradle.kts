@@ -8,7 +8,7 @@ micronaut {
     testRuntime("junit5")
     processing {
         incremental(true)
-        annotations("com.zhokhov.*")
+        annotations("com.zhokhov.dumper.*")
     }
 }
 

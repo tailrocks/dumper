@@ -21,6 +21,9 @@ object Versions {
     // https://plugins.gradle.org/plugin/nu.studer.jooq
     const val gradleJooqPlugin = "5.2"
 
+    // https://plugins.gradle.org/plugin/com.gorylenko.gradle-git-properties
+    const val gradleGitPropertiesPlugin = "2.2.4"
+
     // https://plugins.gradle.org/plugin/com.github.johnrengelman.shadow
     const val gradleShadowPlugin = "6.1.0"
 
@@ -49,10 +52,13 @@ object Versions {
     const val spotbugsAnnotations = "4.2.0"
     const val junit = "5.6.2"
     const val slugify = "2.4"
-
-    // Project
+    const val graphQlDateTime = "3.0.0"
+    const val graphQlTools = "6.2.0"
 
     const val jambalayaChecks = "0.1.1"
     const val jambalayaChecksJooq = "0.1.0"
+    const val jambalayaGraphql = "0.1.0"
+    const val jambalayaGraphqlJooq = "0.1.0"
+    const val jambalayaMicronautGraphql = "0.1.0"
 
 }

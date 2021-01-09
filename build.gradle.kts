@@ -18,6 +18,7 @@ plugins {
     id("net.rdrei.android.buildtimetracker") version Versions.gradleBuildTimeTrackerPlugin
     id("com.jfrog.bintray") version Versions.gradleBintrayPlugin apply false
     id("com.diffplug.spotless") version Versions.gradleSpotlessPlugin
+    id("com.gorylenko.gradle-git-properties") version Versions.gradleGitPropertiesPlugin apply false
     id("com.github.johnrengelman.shadow") version Versions.gradleShadowPlugin apply false
     id("io.micronaut.application") version Versions.gradleMicronautPlugin apply false
     id("io.micronaut.library") version Versions.gradleMicronautPlugin apply false

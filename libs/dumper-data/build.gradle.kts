@@ -19,15 +19,12 @@ micronaut {
         incremental(true)
         module(project.name)
         group(project.group.toString())
-        annotations("com.zhokhov.*")
+        annotations("com.zhokhov.dumper.*")
     }
 }
 
 dependencies {
     // Micronaut
-    api("io.micronaut:micronaut-inject")
-    api("io.micronaut:micronaut-validation")
-    api("io.micronaut:micronaut-runtime")
     api("io.micronaut.flyway:micronaut-flyway")
     api("io.micronaut.sql:micronaut-jooq")
     api("io.micronaut.sql:micronaut-jdbc-hikari")
