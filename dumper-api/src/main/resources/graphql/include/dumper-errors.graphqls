@@ -1,0 +1,35 @@
+### ERRORS
+
+enum LoginErrorCode {
+  USER_NOT_FOUND
+  WRONG_PASSWORD
+}
+
+type LoginError {
+  code: LoginErrorCode!
+  message: String!
+}
+
+enum SecurityErrorCode {
+  UNAUTHORIZED
+}
+
+type SecurityError {
+  code: SecurityErrorCode!
+  message: String!
+}
+
+### UNION
+
+## Query
+
+union UserCurrentPayloadError = SecurityError
+union UserListPayloadError = SecurityError
+
+## Mutation
+
+union LoginPayloadError = LoginError
+union LogoutPayloadError = SecurityError
+union UserCreatePayloadError = SecurityError
+union DatabaseListPayloadError = SecurityError
+union DatabaseCreatePayloadError = SecurityError

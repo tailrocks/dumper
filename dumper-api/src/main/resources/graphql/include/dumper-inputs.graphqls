@@ -1,0 +1,26 @@
+### INPUT
+
+input UserLoginInput {
+  username: String!
+  password: String!
+}
+
+input UserCreateInput {
+  username: String!
+  password: String!
+  email: String!
+  firstName: String!
+  lastName: String!
+}
+
+input DatabaseCreateInput {
+  mainDatabaseId: ID
+  name: String!
+  host: String!
+  port: Int!
+  username: String!
+  password: String!
+  dbname: String!
+  environment: String!
+  description: String!
+}

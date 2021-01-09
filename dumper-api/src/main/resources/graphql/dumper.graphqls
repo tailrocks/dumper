@@ -1,0 +1,30 @@
+# java.time.LocalDate implementation
+scalar LocalDate
+
+# java.time.LocalDateTime implementation
+scalar LocalDateTime
+
+scalar Long
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  userCurrent: UserCurrentPayload!
+
+  userList: UserListPayload!
+
+  databaseList: DatabaseListPayload!
+}
+
+type Mutation {
+  userLogin(input: UserLoginInput!): UserLoginPayload!
+
+  userLogout: UserLogoutPayload!
+
+  userCreate(input: UserCreateInput!): UserCreatePayload!
+
+  databaseCreate(input: DatabaseCreateInput!): DatabaseCreatePayload!
+}

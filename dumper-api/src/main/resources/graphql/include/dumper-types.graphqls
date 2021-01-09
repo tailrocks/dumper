@@ -1,0 +1,21 @@
+### TYPES
+
+type User {
+  id: ID!
+  username: String!
+  email: String!
+  firstName: String!
+  lastName: String!
+}
+
+type Database {
+  id: ID!
+  name: String!
+  host: String!
+  port: Int!
+  username: String!
+  dbname: String!
+  environment: String!
+  description: String!
+  subDatabases: [Database!]!
+}

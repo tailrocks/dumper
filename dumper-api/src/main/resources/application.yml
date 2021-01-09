@@ -1,0 +1,42 @@
+micronaut:
+  application:
+    name: dumper-api
+  server:
+    port: 6731
+    cors:
+      enabled: true
+  security:
+    authentication: cookie
+    redirect:
+      forbidden:
+        enabled: false
+      unauthorized:
+        enabled: false
+    intercept-url-map:
+      - pattern: /**
+        http-method: GET
+        access:
+          - isAnonymous()
+      - pattern: /**
+        http-method: POST
+        access:
+          - isAnonymous()
+datasources:
+  default:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://127.0.0.1:19001/dumper_dev
+    username: postgres
+    password: root
+flyway:
+  datasources:
+    default:
+      enabled: true
+endpoints:
+  health:
+    enabled: true
+    sensitive: false
+    details-visible: anonymous
+jooq:
+  datasources:
+    default:
+      sql-dialect: POSTGRES

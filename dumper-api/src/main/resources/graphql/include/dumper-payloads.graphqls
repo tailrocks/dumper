@@ -1,0 +1,39 @@
+### PAYLOADS
+
+## Query
+
+type UserCurrentPayload {
+  data: User
+  error: UserCurrentPayloadError
+}
+
+type UserListPayload {
+  data: [User!]!
+  error: UserListPayloadError
+}
+
+type DatabaseListPayload {
+  data: [Database!]!
+  error: DatabaseListPayloadError
+}
+
+## Mutation
+
+type UserLoginPayload {
+  data: User
+  error: LoginPayloadError
+}
+
+type UserLogoutPayload {
+  error: LogoutPayloadError
+}
+
+type UserCreatePayload {
+  data: User
+  error: UserCreatePayloadError
+}
+
+type DatabaseCreatePayload {
+  data: Database
+  error: DatabaseCreatePayloadError
+}
