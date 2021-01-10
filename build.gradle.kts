@@ -1,6 +1,6 @@
 import com.jfrog.bintray.gradle.BintrayExtension
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.io.BufferedReader
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
     repositories {
