@@ -22,8 +22,8 @@ jobs:
           restore-keys: ${{ runner.os }}-gradle
       - name: Spotless Check
         run: ./gradlew spotlessCheck
-      - name: Test
-        run: ./gradlew test
+      #- name: Test
+      #  run: ./gradlew test
       - name: Publish dumper-share to Bintray
         run: ./deploy-share.sh
         env:
