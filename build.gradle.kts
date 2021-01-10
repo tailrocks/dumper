@@ -1,4 +1,5 @@
 import com.jfrog.bintray.gradle.BintrayExtension
+import java.io.BufferedReader
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
@@ -80,6 +81,16 @@ allprojects {
     }
 }
 
+var gitVersion = ""
+
+if (gitVersion == "") {
+    val process = Runtime.getRuntime().exec("git rev-parse --verify --short HEAD")
+    val content = process.inputStream.bufferedReader().use(BufferedReader::readText)
+    gitVersion = "git-${content.trim().strip()}"
+
+    println("Git version: $gitVersion")
+}
+
 val publishingProjects = setOf(
         "dumper-share",
         "dumper-test"
@@ -94,6 +105,7 @@ subprojects {
         apply(plugin = "com.jfrog.bintray")
     }
 
+    version = gitVersion
     group = "com.zhokhov.dumper"
 
     java {
@@ -158,10 +170,12 @@ subprojects {
 
     // TODO remove after that issue will be fixed
     // Address https://github.com/gradle/gradle/issues/4823: Force parent project evaluation before sub-project evaluation for Kotlin build scripts
+    /*
     if (gradle.startParameter.isConfigureOnDemand &&
             buildscript.sourceFile?.extension?.toLowerCase() == "kts" &&
             parent != rootProject) {
         generateSequence(parent) { project -> project.parent.takeIf { it != rootProject } }
                 .forEach { evaluationDependsOn(it.path) }
     }
+     */
 }

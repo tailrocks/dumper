@@ -2,8 +2,8 @@ rootProject.name = "dumper"
 
 include(
         // libraries
-        ":libs:dumper-data",
-        ":libs:dumper-data-repositories",
+        ":dumper-data",
+        ":dumper-data-repositories",
 
         // apps
         ":dumper-api",

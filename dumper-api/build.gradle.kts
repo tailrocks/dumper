@@ -17,7 +17,7 @@ micronaut {
 
 dependencies {
     // subprojects
-    implementation(project(":libs:dumper-data-repositories"))
+    implementation(project(":dumper-data-repositories"))
 
     // Micronaut
     annotationProcessor("io.micronaut.data:micronaut-data-processor")
