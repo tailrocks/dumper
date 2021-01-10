@@ -111,7 +111,7 @@ sourceSets {
     main {
         java {
             srcDirs(
-                    "${buildDir}/generated-src/jooq/dumper"
+                    "$buildDir/generated-src/jooq/dumper"
             )
         }
     }

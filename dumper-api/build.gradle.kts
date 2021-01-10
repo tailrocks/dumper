@@ -52,6 +52,6 @@ application {
 tasks {
     dockerBuild {
         val dockerRepository = System.getenv("DOCKER_REPOSITORY") ?: project.name
-        images.set(setOf("${dockerRepository}:${project.version}", "${dockerRepository}:latest"))
+        images.set(setOf("$dockerRepository:${project.version}", "$dockerRepository:latest"))
     }
 }
