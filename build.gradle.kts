@@ -1,6 +1,6 @@
 import com.jfrog.bintray.gradle.BintrayExtension
-import java.io.BufferedReader
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.io.BufferedReader
 
 buildscript {
     repositories {
@@ -81,7 +81,8 @@ allprojects {
     }
 }
 
-var gitVersion = ""
+// TODO
+var gitVersion = "0.1.0"
 
 if (gitVersion == "") {
     val process = Runtime.getRuntime().exec("git rev-parse --verify --short HEAD")
