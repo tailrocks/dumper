@@ -1,6 +1,7 @@
 plugins {
     id("org.flywaydb.flyway") version Versions.flyway
     id("nu.studer.jooq") version Versions.gradleJooqPlugin
+    id("io.micronaut.library")
 }
 
 buildscript {
@@ -12,8 +13,16 @@ buildscript {
 }
 
 dependencies {
+    // Micronaut
+    api("io.micronaut.flyway:micronaut-flyway")
+    api("io.micronaut.sql:micronaut-jooq")
+    api("io.micronaut.sql:micronaut-jdbc-hikari")
+
     // jOOQ
     jooqGenerator("org.postgresql:postgresql:${Versions.postgresql}")
+
+    // libraries
+    api("org.postgresql:postgresql:${Versions.postgresql}")
 }
 
 val datasourceUsername = System.getenv("DATASOURCE_USERNAME") ?: "postgres"

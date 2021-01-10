@@ -1,6 +1,6 @@
 import com.jfrog.bintray.gradle.BintrayExtension
-import java.io.BufferedReader
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.io.BufferedReader
 
 buildscript {
     repositories {
@@ -20,6 +20,7 @@ plugins {
     id("com.jfrog.bintray") version Versions.gradleBintrayPlugin apply false
     id("com.diffplug.spotless") version Versions.gradleSpotlessPlugin
     id("com.gorylenko.gradle-git-properties") version Versions.gradleGitPropertiesPlugin apply false
+    id("com.apollographql.apollo") version Versions.gradleApolloPlugin apply false
     id("com.github.johnrengelman.shadow") version Versions.gradleShadowPlugin apply false
     id("io.micronaut.application") version Versions.gradleMicronautPlugin apply false
     id("io.micronaut.library") version Versions.gradleMicronautPlugin apply false
