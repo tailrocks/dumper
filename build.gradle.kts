@@ -25,6 +25,8 @@ plugins {
     id("io.micronaut.application") version Versions.gradleMicronautPlugin apply false
     id("io.micronaut.library") version Versions.gradleMicronautPlugin apply false
     kotlin("jvm") version Versions.kotlin apply false
+    kotlin("kapt") version Versions.kotlin apply false
+    kotlin("plugin.allopen") version Versions.kotlin apply false
 }
 
 java {

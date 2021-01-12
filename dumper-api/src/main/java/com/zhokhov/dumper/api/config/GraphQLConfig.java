@@ -15,6 +15,8 @@
  */
 package com.zhokhov.dumper.api.config;
 
+import com.zhokhov.dumper.api.graphql.error.LoginError;
+import com.zhokhov.dumper.api.graphql.error.SecurityError;
 import com.zhokhov.graphql.datetime.GraphQLLocalDate;
 import com.zhokhov.graphql.datetime.GraphQLLocalDateTime;
 import graphql.GraphQL;
@@ -28,8 +30,6 @@ import io.micronaut.context.annotation.Factory;
 
 import javax.inject.Singleton;
 import java.util.List;
-
-import static graphql.Scalars.GraphQLLong;
 
 @Factory
 public class GraphQLConfig {
@@ -54,8 +54,9 @@ public class GraphQLConfig {
                 )
                 .scalars(new GraphQLLocalDate())
                 .scalars(new GraphQLLocalDateTime())
-                .scalars(GraphQLLong)
-                .resolvers(resolverList);
+                .resolvers(resolverList)
+                .dictionary(SecurityError.class)
+                .dictionary(LoginError.class);
 
         GraphQLSchema graphQLSchema = builder.build().makeExecutableSchema();
 

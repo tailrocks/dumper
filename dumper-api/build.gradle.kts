@@ -2,6 +2,9 @@ plugins {
     id("com.gorylenko.gradle-git-properties")
     id("com.adarshr.test-logger")
     id("io.micronaut.application")
+    kotlin("jvm")
+    kotlin("kapt")
+    kotlin("plugin.allopen")
 }
 
 micronaut {
@@ -18,16 +21,35 @@ micronaut {
 dependencies {
     // subprojects
     implementation(project(":dumper-data-repositories"))
+    testImplementation(project(":dumper-graphql-client"))
 
     // Micronaut
     annotationProcessor("io.micronaut.data:micronaut-data-processor")
     annotationProcessor("io.micronaut.security:micronaut-security-annotations")
+    kapt(enforcedPlatform("io.micronaut:micronaut-bom:${Versions.micronaut}"))
+    kapt("io.micronaut:micronaut-inject-java")
+    kapt("io.micronaut.data:micronaut-data-processor")
+    kaptTest(enforcedPlatform("io.micronaut:micronaut-bom:${Versions.micronaut}"))
+    kaptTest("io.micronaut:micronaut-inject-java")
+    kaptTest("io.micronaut.data:micronaut-data-processor")
     implementation("io.micronaut:micronaut-inject")
     implementation("io.micronaut:micronaut-validation")
     implementation("io.micronaut:micronaut-runtime")
     implementation("io.micronaut:micronaut-http-server-netty")
     implementation("io.micronaut:micronaut-management")
     implementation("io.micronaut.graphql:micronaut-graphql")
+    testImplementation("io.micronaut.test:micronaut-test-junit5")
+    testImplementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
+
+    // Kotlin
+    testImplementation(kotlin("stdlib-jdk8"))
+    testImplementation(kotlin("reflect"))
+    testImplementation(kotlin("test-junit5"))
+    testRuntimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+    // JUnit
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 
     // GraphQL
     implementation("com.graphql-java-kickstart:graphql-java-tools:${Versions.graphQlTools}")
@@ -37,6 +59,7 @@ dependencies {
     implementation("com.zhokhov.jambalaya:jambalaya-graphql:${Versions.jambalayaGraphql}")
     implementation("com.zhokhov.jambalaya:jambalaya-graphql-jooq:${Versions.jambalayaGraphqlJooq}")
     implementation("com.zhokhov.jambalaya:jambalaya-micronaut-graphql:${Versions.jambalayaMicronautGraphql}")
+    testImplementation("com.zhokhov.jambalaya:jambalaya-graphql-apollo:${Versions.jambalayaGraphqlApollo}")
 }
 
 gitProperties {
