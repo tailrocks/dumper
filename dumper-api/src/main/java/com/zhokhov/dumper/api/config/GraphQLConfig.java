@@ -19,6 +19,7 @@ import com.zhokhov.dumper.api.graphql.error.LoginError;
 import com.zhokhov.dumper.api.graphql.error.SecurityError;
 import com.zhokhov.graphql.datetime.GraphQLLocalDate;
 import com.zhokhov.graphql.datetime.GraphQLLocalDateTime;
+import com.zhokhov.jambalaya.micronaut.graphql.HttpGraphQLExecutionInputCustomizer;
 import graphql.GraphQL;
 import graphql.kickstart.tools.GraphQLResolver;
 import graphql.kickstart.tools.SchemaParser;
@@ -37,7 +38,7 @@ public class GraphQLConfig {
     @Bean
     @Singleton
     public GraphQLExecutionInputCustomizer graphQLExecutionInputCustomizer() {
-        return new CustomGraphQLExecutionInputCustomizer();
+        return new HttpGraphQLExecutionInputCustomizer();
     }
 
     @Bean

@@ -38,6 +38,7 @@ dependencies {
     implementation("io.micronaut:micronaut-http-server-netty")
     implementation("io.micronaut:micronaut-management")
     implementation("io.micronaut.graphql:micronaut-graphql")
+    implementation("io.micronaut.security:micronaut-security-jwt")
     testImplementation("io.micronaut.test:micronaut-test-junit5")
     testImplementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
 
@@ -60,6 +61,9 @@ dependencies {
     implementation("com.zhokhov.jambalaya:jambalaya-graphql-jooq:${Versions.jambalayaGraphqlJooq}")
     implementation("com.zhokhov.jambalaya:jambalaya-micronaut-graphql:${Versions.jambalayaMicronautGraphql}")
     testImplementation("com.zhokhov.jambalaya:jambalaya-graphql-apollo:${Versions.jambalayaGraphqlApollo}")
+
+    // libraries
+    implementation("at.favre.lib:bcrypt:0.9.0") // TODO
 }
 
 gitProperties {
