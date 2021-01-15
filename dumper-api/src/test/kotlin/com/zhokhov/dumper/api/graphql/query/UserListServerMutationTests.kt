@@ -1,19 +1,16 @@
 package com.zhokhov.dumper.api.graphql.query
 
-import com.zhokhov.dumper.graphql.client.query.UserCurrentQuery
 import com.zhokhov.dumper.graphql.client.query.UserListQuery
 import com.zhokhov.dumper.graphql.client.type.SecurityErrorCode
 import com.zhokhov.dumper.test.AbstractTest
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @MicronautTest(transactional = false)
 class UserListServerMutationTests : AbstractTest() {
 
@@ -30,7 +27,7 @@ class UserListServerMutationTests : AbstractTest() {
             assertNotNull(data).apply {
                 assertNotNull(userList()).apply {
                     assertNotNull(error()).let {
-                        assertTrue(it is UserCurrentQuery.AsSecurityError).apply {
+                        assertTrue(it is UserListQuery.AsSecurityError).apply {
                             assertEquals(SecurityErrorCode.UNAUTHORIZED, it.code())
                         }
                     }

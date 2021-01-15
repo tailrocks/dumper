@@ -1,48 +1,23 @@
 package com.zhokhov.dumper.api.graphql.mutation
 
-import com.zhokhov.dumper.api.security.PasswordEncoder
-import com.zhokhov.dumper.data.repository.AccountRepository
 import com.zhokhov.dumper.graphql.client.mutation.UserLoginMutation
 import com.zhokhov.dumper.graphql.client.query.UserCurrentQuery
-import com.zhokhov.dumper.graphql.client.type.CustomType
 import com.zhokhov.dumper.graphql.client.type.UserLoginInput
-import com.zhokhov.dumper.test.DataTestService
-import com.zhokhov.jambalaya.graphql.apollo.GraphQlClient
-import io.micronaut.runtime.server.EmbeddedServer
+import com.zhokhov.dumper.test.AbstractTest
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
-import javax.inject.Inject
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @MicronautTest(transactional = false)
-class UserLoginServerMutationTests {
-
-    @Inject lateinit var embeddedServer: EmbeddedServer
-    @Inject lateinit var accountRepository: AccountRepository
-    @Inject lateinit var passwordEncoder: PasswordEncoder
-    @Inject lateinit var dataTestService: DataTestService
-
-    private lateinit var graphQlClient: GraphQlClient
-
-    @BeforeAll
-    fun init() {
-        dataTestService.clean()
-
-        val url = "http://${embeddedServer.host}:${embeddedServer.port}/graphql"
-        graphQlClient = GraphQlClient(url, CustomType.values(), null)
-    }
+class UserLoginServerMutationTests : AbstractTest() {
 
     @Test
     fun `user login`() {
         /** GIVEN **/
-        val password = passwordEncoder.encode("test")
-        accountRepository.create("test", password, "test@test.com", "Alex", "Hu")
+        createTestUser()
 
         /** WHEN **/
         val userLoginResult = graphQlClient.blockingMutate(

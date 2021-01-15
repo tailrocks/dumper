@@ -7,7 +7,7 @@ import com.zhokhov.dumper.graphql.client.type.CustomType
 import com.zhokhov.dumper.graphql.client.type.UserLoginInput
 import com.zhokhov.jambalaya.graphql.apollo.GraphQlClient
 import io.micronaut.runtime.server.EmbeddedServer
-import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
 import javax.inject.Inject
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -23,17 +23,25 @@ abstract class AbstractTest {
 
     lateinit var graphQlClient: GraphQlClient
 
-    @BeforeAll
-    fun beforeAll() {
+    @BeforeEach
+    fun beforeEach() {
         dataTestService.clean()
 
+        graphQlClient = createGraphQlClient()
+    }
+
+    fun createGraphQlClient(): GraphQlClient {
         val url = "http://${embeddedServer.host}:${embeddedServer.port}/graphql"
-        graphQlClient = GraphQlClient(url, CustomType.values(), null)
+        return GraphQlClient(url, CustomType.values(), null)
     }
 
     fun createTestUserAndLogin() {
-        createUser("test", "test", "test@test.com", "Alex", "Hu")
+        createTestUser()
         login("test", "test")
+    }
+
+    fun createTestUser() {
+        createUser("test", "test", "test@test.com", "Alex", "Hu")
     }
 
     fun createUser(username: String, password: String, email: String, firstName: String, lastName: String) {
@@ -41,7 +49,7 @@ abstract class AbstractTest {
         accountRepository.create(username, encodedPassword, email, firstName, lastName)
     }
 
-    fun login(username: String, password: String) {
+    fun login(username: String, password: String, graphQlClient: GraphQlClient = this.graphQlClient) {
         val userLoginResult = graphQlClient.blockingMutate(
                 UserLoginMutation.builder()
                         .input(
@@ -59,7 +67,7 @@ abstract class AbstractTest {
                 assertNotNull(userLogin()).apply {
                     assertNull(error())
                     assertNotNull(data()).apply {
-                        assertEquals("test", username())
+                        assertEquals(username, username())
                     }
                 }
             }

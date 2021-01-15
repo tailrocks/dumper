@@ -5,14 +5,12 @@ import com.zhokhov.dumper.graphql.client.type.SecurityErrorCode
 import com.zhokhov.dumper.test.AbstractTest
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @MicronautTest(transactional = false)
 class UserLogoutServerMutationTests : AbstractTest() {
 

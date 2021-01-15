@@ -383,19 +383,15 @@
               "description": "",
               "args": [],
               "type": {
-                "kind": "NON_NULL",
+                "kind": "LIST",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
+                  "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "User",
-                      "ofType": null
-                    }
+                    "kind": "OBJECT",
+                    "name": "User",
+                    "ofType": null
                   }
                 }
               },
@@ -446,19 +442,15 @@
               "description": "",
               "args": [],
               "type": {
-                "kind": "NON_NULL",
+                "kind": "LIST",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
+                  "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "Database",
-                      "ofType": null
-                    }
+                    "kind": "OBJECT",
+                    "name": "Database",
+                    "ofType": null
                   }
                 }
               },
@@ -705,19 +697,15 @@
               "description": "",
               "args": [],
               "type": {
-                "kind": "NON_NULL",
+                "kind": "LIST",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
+                  "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "Table",
-                      "ofType": null
-                    }
+                    "kind": "OBJECT",
+                    "name": "Table",
+                    "ofType": null
                   }
                 }
               },
@@ -1236,19 +1224,15 @@
               "description": "",
               "args": [],
               "type": {
-                "kind": "NON_NULL",
+                "kind": "LIST",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
+                  "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "ExportDeclaration",
-                      "ofType": null
-                    }
+                    "kind": "OBJECT",
+                    "name": "ExportDeclaration",
+                    "ofType": null
                   }
                 }
               },
