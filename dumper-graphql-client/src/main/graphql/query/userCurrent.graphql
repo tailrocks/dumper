@@ -1,0 +1,16 @@
+query userCurrent {
+  userCurrent {
+    data {
+      username
+      email
+      firstName
+      lastName
+    }
+    error {
+      ... on SecurityError {
+        code
+        message
+      }
+    }
+  }
+}

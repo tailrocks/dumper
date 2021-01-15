@@ -11,19 +11,19 @@ public class UserGraph extends AbstractPersistentEntity<Long, AccountRecord> {
     }
 
     public String username() {
-        throw new UnsupportedOperationException();
+        return getEntity().getUsername();
     }
 
     public String email() {
-        throw new UnsupportedOperationException();
+        return getEntity().getEmail();
     }
 
     public String firstName() {
-        throw new UnsupportedOperationException();
+        return getEntity().getFirstName();
     }
 
     public String lastName() {
-        throw new UnsupportedOperationException();
+        return getEntity().getLastName();
     }
 
 }

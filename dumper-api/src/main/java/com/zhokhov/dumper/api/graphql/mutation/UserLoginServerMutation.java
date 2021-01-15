@@ -1,7 +1,7 @@
 package com.zhokhov.dumper.api.graphql.mutation;
 
-import com.zhokhov.dumper.api.graphql.error.SecurityError;
-import com.zhokhov.dumper.api.graphql.error.code.SecurityErrorCode;
+import com.zhokhov.dumper.api.graphql.error.LoginError;
+import com.zhokhov.dumper.api.graphql.error.code.LoginErrorCode;
 import com.zhokhov.dumper.api.graphql.input.UserLoginInput;
 import com.zhokhov.dumper.api.graphql.model.UserGraph;
 import com.zhokhov.dumper.api.graphql.payload.UserLoginPayload;
@@ -96,9 +96,9 @@ public class UserLoginServerMutation implements GraphQLMutationResolver {
 
                 switch (authenticationFailed.getReason()) {
                     case USER_NOT_FOUND:
-                        return new UserLoginPayload(new SecurityError(SecurityErrorCode.UNAUTHORIZED, "error"));
+                        return new UserLoginPayload(new LoginError(LoginErrorCode.USER_NOT_FOUND, "error"));
                     case CREDENTIALS_DO_NOT_MATCH:
-                        return new UserLoginPayload(new SecurityError(SecurityErrorCode.UNAUTHORIZED, "error"));
+                        return new UserLoginPayload(new LoginError(LoginErrorCode.USER_NOT_FOUND, "error"));
                     default:
                         throw new IllegalStateException("Unexpected value: " + authenticationFailed.getReason());
                 }
