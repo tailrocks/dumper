@@ -3215,16 +3215,6 @@
           "interfaces": null,
           "enumValues": null,
           "possibleTypes": null
-        },
-        {
-          "kind": "SCALAR",
-          "name": "Long",
-          "description": "",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
         }
       ],
       "directives": [

@@ -4,8 +4,6 @@ scalar LocalDate
 # java.time.LocalDateTime implementation
 scalar LocalDateTime
 
-scalar Long
-
 schema {
   query: Query
   mutation: Mutation

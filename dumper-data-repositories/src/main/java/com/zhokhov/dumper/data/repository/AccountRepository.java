@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.inject.Singleton;
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 import static com.zhokhov.dumper.data.jooq.tables.Account.ACCOUNT;
@@ -40,6 +41,14 @@ public class AccountRepository {
         username = username.trim().strip().toLowerCase();
 
         return dslContext.fetchOptional(ACCOUNT, ACCOUNT.USERNAME.eq(username));
+    }
+
+    @ReadOnly
+    public List<AccountRecord> findAllOrderByUsername() {
+        return dslContext
+                .selectFrom(ACCOUNT)
+                .orderBy(ACCOUNT.USERNAME.asc())
+                .fetch();
     }
 
     @ReadOnly

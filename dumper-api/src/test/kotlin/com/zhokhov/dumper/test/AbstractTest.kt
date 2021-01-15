@@ -1,11 +1,10 @@
-package com.zhokhov.dumper.api.graphql.mutation
+package com.zhokhov.dumper.test
 
 import com.zhokhov.dumper.api.security.PasswordEncoder
 import com.zhokhov.dumper.data.repository.AccountRepository
 import com.zhokhov.dumper.graphql.client.mutation.UserLoginMutation
 import com.zhokhov.dumper.graphql.client.type.CustomType
 import com.zhokhov.dumper.graphql.client.type.UserLoginInput
-import com.zhokhov.dumper.test.DataTestService
 import com.zhokhov.jambalaya.graphql.apollo.GraphQlClient
 import io.micronaut.runtime.server.EmbeddedServer
 import org.junit.jupiter.api.BeforeAll
@@ -33,13 +32,13 @@ abstract class AbstractTest {
     }
 
     fun createTestUserAndLogin() {
-        createTestUser()
+        createUser("test", "test", "test@test.com", "Alex", "Hu")
         login("test", "test")
     }
 
-    fun createTestUser() {
-        val password = passwordEncoder.encode("test")
-        accountRepository.create("test", password, "test@test.com", "Alex", "Hu")
+    fun createUser(username: String, password: String, email: String, firstName: String, lastName: String) {
+        val encodedPassword = passwordEncoder.encode(password)
+        accountRepository.create(username, encodedPassword, email, firstName, lastName)
     }
 
     fun login(username: String, password: String) {

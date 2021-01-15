@@ -4,7 +4,7 @@ import com.zhokhov.dumper.api.graphql.error.SecurityError;
 import com.zhokhov.dumper.api.graphql.error.code.SecurityErrorCode;
 import com.zhokhov.dumper.api.graphql.model.UserGraph;
 import com.zhokhov.dumper.api.graphql.payload.UserCurrentPayload;
-import com.zhokhov.dumper.api.security.PolusharieSecurityService;
+import com.zhokhov.dumper.api.security.DumperSecurityService;
 import com.zhokhov.dumper.data.jooq.tables.records.AccountRecord;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 
@@ -14,14 +14,14 @@ import java.util.Optional;
 @Singleton
 public class UserCurrentServerQuery implements GraphQLQueryResolver {
 
-    private final PolusharieSecurityService polusharieSecurityService;
+    private final DumperSecurityService dumperSecurityService;
 
-    public UserCurrentServerQuery(PolusharieSecurityService polusharieSecurityService) {
-        this.polusharieSecurityService = polusharieSecurityService;
+    public UserCurrentServerQuery(DumperSecurityService dumperSecurityService) {
+        this.dumperSecurityService = dumperSecurityService;
     }
 
     public UserCurrentPayload userCurrent() {
-        Optional<AccountRecord> account = polusharieSecurityService.getCurrentUser();
+        Optional<AccountRecord> account = dumperSecurityService.getCurrentUser();
 
         if (account.isPresent()) {
             return new UserCurrentPayload(new UserGraph(account.get()));

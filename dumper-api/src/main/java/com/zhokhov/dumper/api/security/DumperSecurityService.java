@@ -9,12 +9,12 @@ import javax.inject.Singleton;
 import java.util.Optional;
 
 @Singleton
-public class PolusharieSecurityService {
+public class DumperSecurityService {
 
     private final AccountRepository accountRepository;
     private final SecurityService securityService;
 
-    public PolusharieSecurityService(AccountRepository accountRepository, SecurityService securityService) {
+    public DumperSecurityService(AccountRepository accountRepository, SecurityService securityService) {
         this.accountRepository = accountRepository;
         this.securityService = securityService;
     }

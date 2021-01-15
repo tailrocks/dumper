@@ -2,6 +2,7 @@ package com.zhokhov.dumper.api.graphql.mutation
 
 import com.zhokhov.dumper.graphql.client.mutation.UserLogoutMutation
 import com.zhokhov.dumper.graphql.client.type.SecurityErrorCode
+import com.zhokhov.dumper.test.AbstractTest
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance

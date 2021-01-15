@@ -3,7 +3,7 @@ package com.zhokhov.dumper.api.graphql.mutation;
 import com.zhokhov.dumper.api.graphql.error.SecurityError;
 import com.zhokhov.dumper.api.graphql.error.code.SecurityErrorCode;
 import com.zhokhov.dumper.api.graphql.payload.UserLogoutPayload;
-import com.zhokhov.dumper.api.security.PolusharieSecurityService;
+import com.zhokhov.dumper.api.security.DumperSecurityService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import graphql.schema.DataFetchingEnvironment;
 import io.micronaut.context.event.ApplicationEventPublisher;
@@ -29,18 +29,18 @@ public class UserLogoutServerMutation implements GraphQLMutationResolver {
 
     private static final Logger LOG = LoggerFactory.getLogger(UserLogoutServerMutation.class);
 
-    private final PolusharieSecurityService polusharieSecurityService;
+    private final DumperSecurityService dumperSecurityService;
     private final ApplicationEventPublisher eventPublisher;
     private final AccessTokenCookieConfiguration accessTokenCookieConfiguration;
     private final RefreshTokenCookieConfiguration refreshTokenCookieConfiguration;
 
     public UserLogoutServerMutation(
-            PolusharieSecurityService polusharieSecurityService,
+            DumperSecurityService dumperSecurityService,
             ApplicationEventPublisher eventPublisher,
             AccessTokenCookieConfiguration accessTokenCookieConfiguration,
             RefreshTokenCookieConfiguration refreshTokenCookieConfiguration
     ) {
-        this.polusharieSecurityService = polusharieSecurityService;
+        this.dumperSecurityService = dumperSecurityService;
         this.eventPublisher = eventPublisher;
         this.accessTokenCookieConfiguration = accessTokenCookieConfiguration;
         this.refreshTokenCookieConfiguration = refreshTokenCookieConfiguration;
@@ -52,14 +52,14 @@ public class UserLogoutServerMutation implements GraphQLMutationResolver {
         HttpRequest request = getRequest(env.getContext());
         MutableHttpResponse<String> response = getResponse(env.getContext());
 
-        if (!polusharieSecurityService.isLoggedIn()) {
+        if (!dumperSecurityService.isLoggedIn()) {
             // TODO
             return new UserLogoutPayload(new SecurityError(SecurityErrorCode.UNAUTHORIZED, "UNAUTHORIZED"));
         }
 
         LOG.debug("Logging out");
 
-        Authentication authentication = polusharieSecurityService.getAuthentication().orElseThrow();
+        Authentication authentication = dumperSecurityService.getAuthentication().orElseThrow();
 
         eventPublisher.publishEvent(new LogoutEvent(authentication));
 

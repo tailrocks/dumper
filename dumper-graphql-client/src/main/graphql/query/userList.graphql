@@ -1,0 +1,16 @@
+query userList {
+  userList {
+    data {
+      username
+      email
+      firstName
+      lastName
+    }
+    error {
+      ... on SecurityError {
+        code
+        message
+      }
+    }
+  }
+}
