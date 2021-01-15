@@ -3,60 +3,57 @@ package com.zhokhov.dumper.api.graphql.mutation
 import com.zhokhov.dumper.api.security.PasswordEncoder
 import com.zhokhov.dumper.data.repository.AccountRepository
 import com.zhokhov.dumper.graphql.client.mutation.UserLoginMutation
-import com.zhokhov.dumper.graphql.client.query.UserCurrentQuery
 import com.zhokhov.dumper.graphql.client.type.CustomType
 import com.zhokhov.dumper.graphql.client.type.UserLoginInput
 import com.zhokhov.dumper.test.DataTestService
 import com.zhokhov.jambalaya.graphql.apollo.GraphQlClient
 import io.micronaut.runtime.server.EmbeddedServer
-import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.junit.jupiter.api.BeforeAll
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
 import javax.inject.Inject
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@MicronautTest(transactional = false)
-class UserLoginServerMutationTests {
+abstract class AbstractTest {
 
     @Inject lateinit var embeddedServer: EmbeddedServer
     @Inject lateinit var accountRepository: AccountRepository
     @Inject lateinit var passwordEncoder: PasswordEncoder
     @Inject lateinit var dataTestService: DataTestService
 
-    private lateinit var graphQlClient: GraphQlClient
+    lateinit var graphQlClient: GraphQlClient
 
     @BeforeAll
-    fun init() {
+    fun beforeAll() {
         dataTestService.clean()
 
         val url = "http://${embeddedServer.host}:${embeddedServer.port}/graphql"
         graphQlClient = GraphQlClient(url, CustomType.values(), null)
     }
 
-    @Test
-    fun `user login`() {
-        /** GIVEN **/
+    fun createTestUserAndLogin() {
+        createTestUser()
+        login("test", "test")
+    }
+
+    fun createTestUser() {
         val password = passwordEncoder.encode("test")
         accountRepository.create("test", password, "test@test.com", "Alex", "Hu")
+    }
 
-        /** WHEN **/
+    fun login(username: String, password: String) {
         val userLoginResult = graphQlClient.blockingMutate(
                 UserLoginMutation.builder()
                         .input(
                                 UserLoginInput.builder()
-                                        .username("test")
-                                        .password("test")
+                                        .username(username)
+                                        .password(password)
                                         .build()
                         )
                         .build()
         )
 
-        /** THEN **/
         assertNotNull(userLoginResult).apply {
             assertFalse(hasErrors())
             assertNotNull(data).apply {
@@ -64,30 +61,6 @@ class UserLoginServerMutationTests {
                     assertNull(error())
                     assertNotNull(data()).apply {
                         assertEquals("test", username())
-                        assertEquals("test@test.com", email())
-                        assertEquals("Alex", firstName())
-                        assertEquals("Hu", lastName())
-                    }
-                }
-            }
-        }
-
-        /** WHEN **/
-        val userCurrentResult = graphQlClient.blockingQuery(
-                UserCurrentQuery.builder().build()
-        )
-
-        /** THEN **/
-        assertNotNull(userCurrentResult).apply {
-            assertFalse(hasErrors())
-            assertNotNull(data).apply {
-                assertNotNull(userCurrent()).apply {
-                    assertNull(error())
-                    assertNotNull(data()).apply {
-                        assertEquals("test", username())
-                        assertEquals("test@test.com", email())
-                        assertEquals("Alex", firstName())
-                        assertEquals("Hu", lastName())
                     }
                 }
             }
