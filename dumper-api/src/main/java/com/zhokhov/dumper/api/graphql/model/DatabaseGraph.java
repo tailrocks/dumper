@@ -4,8 +4,6 @@ import com.zhokhov.dumper.data.jooq.tables.records.DatabaseRecord;
 import com.zhokhov.jambalaya.graphql.jooq.model.AbstractPersistentEntity;
 import edu.umd.cs.findbugs.annotations.NonNull;
 
-import java.util.List;
-
 public class DatabaseGraph extends AbstractPersistentEntity<Long, DatabaseRecord> {
 
     public DatabaseGraph(@NonNull DatabaseRecord entity) {
@@ -13,35 +11,31 @@ public class DatabaseGraph extends AbstractPersistentEntity<Long, DatabaseRecord
     }
 
     public String name() {
-        throw new UnsupportedOperationException();
+        return getEntity().getName();
     }
 
     public String host() {
-        throw new UnsupportedOperationException();
+        return getEntity().getHost();
     }
 
     public Integer port() {
-        throw new UnsupportedOperationException();
+        return getEntity().getPort();
     }
 
     public String username() {
-        throw new UnsupportedOperationException();
+        return getEntity().getUsername();
     }
 
     public String dbname() {
-        throw new UnsupportedOperationException();
+        return getEntity().getDbname();
     }
 
     public String environment() {
-        throw new UnsupportedOperationException();
+        return getEntity().getEnvironment();
     }
 
     public String description() {
-        throw new UnsupportedOperationException();
-    }
-
-    public List<DatabaseGraph> subDatabases() {
-        throw new UnsupportedOperationException();
+        return getEntity().getDescription();
     }
 
 }

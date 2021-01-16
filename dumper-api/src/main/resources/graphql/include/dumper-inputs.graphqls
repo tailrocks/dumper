@@ -39,12 +39,14 @@ input UserCreateInput {
 }
 
 input DatabaseCreateInput {
-  mainDatabaseId: ID
-  name: String!
+  # optional, required only for main databases
+  name: String
+  # optional, required only for sub-databases with different environments
+  mainDatabaseName: String
   host: String!
   port: Int!
   username: String!
-  password: String!
+  password: String
   dbname: String!
   environment: String!
   description: String!

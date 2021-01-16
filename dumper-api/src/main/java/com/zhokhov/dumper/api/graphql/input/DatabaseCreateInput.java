@@ -2,8 +2,8 @@ package com.zhokhov.dumper.api.graphql.input;
 
 public class DatabaseCreateInput {
 
-    private String mainDatabaseId;
     private String name;
+    private String mainDatabaseName;
     private String host;
     private Integer port;
     private String username;
@@ -12,20 +12,20 @@ public class DatabaseCreateInput {
     private String environment;
     private String description;
 
-    public String getMainDatabaseId() {
-        return mainDatabaseId;
-    }
-
-    public void setMainDatabaseId(String mainDatabaseId) {
-        this.mainDatabaseId = mainDatabaseId;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getMainDatabaseName() {
+        return mainDatabaseName;
+    }
+
+    public void setMainDatabaseName(String mainDatabaseName) {
+        this.mainDatabaseName = mainDatabaseName;
     }
 
     public String getHost() {
