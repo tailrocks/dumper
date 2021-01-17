@@ -2,12 +2,18 @@ package com.zhokhov.dumper.test
 
 import com.zhokhov.dumper.api.security.PasswordEncoder
 import com.zhokhov.dumper.data.repository.AccountRepository
+import com.zhokhov.dumper.data.repository.DatabaseRepository
 import com.zhokhov.dumper.graphql.client.mutation.UserLoginMutation
 import com.zhokhov.dumper.graphql.client.type.CustomType
 import com.zhokhov.dumper.graphql.client.type.UserLoginInput
 import com.zhokhov.jambalaya.graphql.apollo.GraphQlClient
 import io.micronaut.runtime.server.EmbeddedServer
+import okhttp3.JavaNetCookieJar
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.junit.jupiter.api.BeforeEach
+import java.net.CookieManager
+import java.time.Duration
 import javax.inject.Inject
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -18,6 +24,7 @@ abstract class AbstractTest {
 
     @Inject lateinit var embeddedServer: EmbeddedServer
     @Inject lateinit var accountRepository: AccountRepository
+    @Inject lateinit var databaseRepository: DatabaseRepository
     @Inject lateinit var passwordEncoder: PasswordEncoder
     @Inject lateinit var dataTestService: DataTestService
 
@@ -32,7 +39,24 @@ abstract class AbstractTest {
 
     fun createGraphQlClient(): GraphQlClient {
         val url = "http://${embeddedServer.host}:${embeddedServer.port}/graphql"
-        return GraphQlClient(url, CustomType.values(), null)
+
+        val cookieHandler = CookieManager()
+
+        val logging = HttpLoggingInterceptor()
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+
+        val okHttpClient = OkHttpClient.Builder()
+                .cookieJar(JavaNetCookieJar(cookieHandler))
+                .addInterceptor(logging)
+                .callTimeout(Duration.ofMinutes(5))
+                .connectTimeout(Duration.ofMinutes(5))
+                .readTimeout(Duration.ofMinutes(5))
+                .writeTimeout(Duration.ofMinutes(5))
+                .build()
+
+        return GraphQlClient(url, CustomType.values(), okHttpClient).apply {
+            timeout = Duration.ofMinutes(5)
+        }
     }
 
     fun createTestUserAndLogin() {
@@ -72,6 +96,32 @@ abstract class AbstractTest {
                 }
             }
         }
+    }
+
+    fun createTestDatabases() {
+        val mainDatabase = databaseRepository.create(
+                "test",
+                "127.0.0.1",
+                19001,
+                "postgres",
+                "",
+                "dumper-testdb-prod",
+                "prod",
+                "Prod db",
+                null
+        )
+
+        databaseRepository.create(
+                "test-stage",
+                "127.0.0.1",
+                19001,
+                "postgres",
+                "",
+                "dumper-testdb-stage",
+                "stage",
+                "Stage db",
+                mainDatabase.id
+        )
     }
 
 }

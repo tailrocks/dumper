@@ -11,7 +11,7 @@ import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
 @MicronautTest(transactional = false)
-class UserCurrentServerMutationTests : AbstractTest() {
+class UserCurrentServerQueryTests : AbstractTest() {
 
     @Test
     fun `not authorized`() {

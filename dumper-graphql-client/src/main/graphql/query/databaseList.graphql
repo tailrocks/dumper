@@ -1,0 +1,28 @@
+query databaseList {
+  databaseList {
+    data {
+      name
+      host
+      port
+      username
+      dbname
+      environment
+      description
+      subDatabases {
+        name
+        host
+        port
+        username
+        dbname
+        environment
+        description
+      }
+    }
+    error {
+      ... on SecurityError {
+        code
+        message
+      }
+    }
+  }
+}

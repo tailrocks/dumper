@@ -12,7 +12,7 @@ import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 @MicronautTest(transactional = false)
-class UserListServerMutationTests : AbstractTest() {
+class UserListServerQueryTests : AbstractTest() {
 
     @Test
     fun `not authorized`() {

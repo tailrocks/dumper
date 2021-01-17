@@ -25,7 +25,7 @@ public class DatabaseByMainDatabaseIdDataLoader extends AbstractMappedDataLoader
 
     @Override
     protected MappedBatchLoaderWithContext<Long, List<DatabaseRecord>> getBatchLoader() {
-        return (keys, batchLoaderEnvironment) -> CompletableFuture.completedFuture(
+        return (keys, environment) -> CompletableFuture.completedFuture(
                 databaseRepository
                         .findAllByMainDatabaseId(new ArrayList<>(keys))
                         .stream()

@@ -53,6 +53,15 @@ public class DatabaseRepository {
                 .fetch();
     }
 
+    @ReadOnly
+    public List<DatabaseRecord> findAllMainDatabasesOrderByName() {
+        return dslContext
+                .selectFrom(DATABASE)
+                .where(DATABASE.MAIN_DATABASE_ID.isNull())
+                .orderBy(DATABASE.NAME.asc())
+                .fetch();
+    }
+
     @Transactional
     public DatabaseRecord create(
             @NonNull String name,
