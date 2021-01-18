@@ -4,3 +4,23 @@ datasources:
     url: jdbc:postgresql://127.0.0.1:19001/dumper_test
     username: postgres
     password: root
+  example-prod:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://127.0.0.1:19001/dumper_example_prod
+    username: postgres
+    password: root
+  example-stage:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://127.0.0.1:19001/dumper_example_stage
+    username: postgres
+    password: root
+flyway:
+  datasources:
+    example-prod:
+      enabled: true
+      clean-schema: true
+      locations: test-schema
+    example-stage:
+      enabled: true
+      clean-schema: true
+      locations: test-schema

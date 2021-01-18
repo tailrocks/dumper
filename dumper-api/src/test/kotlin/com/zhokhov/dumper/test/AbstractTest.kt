@@ -98,26 +98,27 @@ abstract class AbstractTest {
         }
     }
 
+    // TODO use config here
     fun createTestDatabases() {
         val mainDatabase = databaseRepository.create(
-                "test",
+                "example",
                 "127.0.0.1",
                 19001,
                 "postgres",
                 "",
-                "dumper-testdb-prod",
+                "dumper_example_prod",
                 "prod",
                 "Prod db",
                 null
         )
 
         databaseRepository.create(
-                "test-stage",
+                "example-stage",
                 "127.0.0.1",
                 19001,
                 "postgres",
                 "",
-                "dumper-testdb-stage",
+                "dumper_example_stage",
                 "stage",
                 "Stage db",
                 mainDatabase.id

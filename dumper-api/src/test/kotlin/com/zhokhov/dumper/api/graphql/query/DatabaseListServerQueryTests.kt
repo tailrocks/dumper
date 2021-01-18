@@ -56,21 +56,21 @@ class DatabaseListServerQueryTests : AbstractTest() {
                     assertNotNull(data()).apply {
                         assertEquals(1, size)
                         get(0).apply {
-                            assertEquals("test", name())
+                            assertEquals("example", name())
                             assertEquals("127.0.0.1", host())
                             assertEquals(19001, port())
                             assertEquals("postgres", username())
-                            assertEquals("dumper-testdb-prod", dbname())
+                            assertEquals("dumper_example_prod", dbname())
                             assertEquals("prod", environment())
                             assertEquals("Prod db", description())
                             assertNotNull(subDatabases()).apply {
                                 assertEquals(1, size)
                                 get(0).apply {
-                                    assertEquals("test-stage", name())
+                                    assertEquals("example-stage", name())
                                     assertEquals("127.0.0.1", host())
                                     assertEquals(19001, port())
                                     assertEquals("postgres", username())
-                                    assertEquals("dumper-testdb-stage", dbname())
+                                    assertEquals("dumper_example_stage", dbname())
                                     assertEquals("stage", environment())
                                     assertEquals("Stage db", description())
                                 }
