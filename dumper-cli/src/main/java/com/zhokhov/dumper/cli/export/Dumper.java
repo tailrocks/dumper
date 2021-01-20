@@ -18,6 +18,8 @@ package com.zhokhov.dumper.cli.export;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.zhokhov.dumper.schema.Schema;
+import com.zhokhov.dumper.schema.SchemaReader;
 import com.zhokhov.dumper.share.TableStructure;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import edu.umd.cs.findbugs.annotations.Nullable;

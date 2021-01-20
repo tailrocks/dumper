@@ -4,7 +4,6 @@
 
 input TableListInput {
   databaseName: String!
-  tableName: String!
 }
 
 input TableInput {

@@ -58,7 +58,6 @@ allprojects {
 
     repositories {
         mavenLocal()
-        gradlePluginPortal()
         jcenter()
         mavenCentral()
         maven { url = uri("https://dl.bintray.com/expatiat/jambalaya") }

@@ -18,8 +18,6 @@ type Query {
 
   tableList(input: TableListInput!): TableListPayload!
 
-  table(input: TableInput!): TablePayload!
-
   tableContent(input: TableContentInput!): TableContentPayload!
 
   exportDeclarationList: ExportDeclarationListPayload!

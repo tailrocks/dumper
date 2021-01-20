@@ -21,6 +21,7 @@ micronaut {
 dependencies {
     // subprojects
     implementation(project(":dumper-data-repositories"))
+    implementation(project(":dumper-schema"))
     testImplementation(project(":dumper-graphql-client"))
 
     // Micronaut
@@ -61,6 +62,7 @@ dependencies {
     implementation("com.zhokhov.jambalaya:jambalaya-graphql-jooq:${Versions.jambalayaGraphqlJooq}")
     implementation("com.zhokhov.jambalaya:jambalaya-micronaut-graphql:${Versions.jambalayaMicronautGraphql}")
     testImplementation("com.zhokhov.jambalaya:jambalaya-graphql-apollo:${Versions.jambalayaGraphqlApollo}")
+    testImplementation("com.zhokhov.jambalaya:jambalaya-kotlin-test:${Versions.jambalayaKotlinTest}")
 
     // libraries
     implementation("at.favre.lib:bcrypt:0.9.0") // TODO

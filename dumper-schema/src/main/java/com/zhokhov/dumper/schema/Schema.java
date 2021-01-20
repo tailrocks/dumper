@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.zhokhov.dumper.cli.export;
+package com.zhokhov.dumper.schema;
 
 import edu.umd.cs.findbugs.annotations.NonNull;
 
@@ -29,6 +29,10 @@ public final class Schema {
     private final Map<String, Table> tables = new LinkedHashMap<>();
 
     protected Schema() {
+    }
+
+    public List<Table> getTables() {
+        return List.copyOf(tables.values());
     }
 
     public Table getTable(@NonNull String name) {

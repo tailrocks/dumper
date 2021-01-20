@@ -58,6 +58,8 @@ task("generateGraphQLSchema", Exec::class) {
 
     val apolloCodegenCmd = if (Os.isFamily(Os.FAMILY_WINDOWS)) "apollo-codegen.cmd" else "apollo-codegen"
 
+    file("$projectDir/src/main/graphql").mkdirs()
+
     commandLine(
             apolloCodegenCmd,
             "introspect-schema",

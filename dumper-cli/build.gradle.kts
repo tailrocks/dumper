@@ -14,6 +14,7 @@ micronaut {
 
 dependencies {
     // subprojects
+    implementation(project(":dumper-schema"))
     implementation(project(":dumper-share"))
 
     // Micronaut

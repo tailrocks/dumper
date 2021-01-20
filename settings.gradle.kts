@@ -5,6 +5,7 @@ include(
         ":dumper-data",
         ":dumper-data-repositories",
         ":dumper-graphql-client",
+        ":dumper-schema",
 
         // apps
         ":dumper-api",
