@@ -1,0 +1,23 @@
+query tableContent($input: TableContentInput!) {
+  tableContent(input: $input) {
+    data {
+      rows {
+        primaryKey {
+          field
+          value
+        }
+        values
+      }
+      columns {
+        name
+        kind
+      }
+    }
+    error {
+      ... on SecurityError {
+        code
+        message
+      }
+    }
+  }
+}

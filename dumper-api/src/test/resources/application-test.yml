@@ -24,3 +24,9 @@ flyway:
       enabled: true
       clean-schema: true
       locations: test-schema
+jooq:
+  datasources:
+    example-prod:
+      sql-dialect: POSTGRES
+    example-stage:
+      sql-dialect: POSTGRES
