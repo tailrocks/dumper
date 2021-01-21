@@ -59,12 +59,12 @@ object Versions {
     const val graphQlTools = "11.0.0"
     const val apollo = "2.4.6"
 
-    const val jambalayaChecks = "0.1.3"
+    const val jambalayaChecks = "0.1.4"
     const val jambalayaChecksJooq = "0.1.0"
     const val jambalayaGraphql = "0.1.0"
     const val jambalayaGraphqlApollo = "0.2.0"
     const val jambalayaGraphqlJooq = "0.1.0"
-    const val jambalayaKotlinTest = "0.1.1"
+    const val jambalayaKotlinTest = "0.1.2"
     const val jambalayaMicronautGraphql = "0.1.1"
 
 }

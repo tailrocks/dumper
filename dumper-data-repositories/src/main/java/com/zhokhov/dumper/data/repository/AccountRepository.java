@@ -9,11 +9,13 @@ import org.slf4j.LoggerFactory;
 
 import javax.inject.Singleton;
 import javax.transaction.Transactional;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 import static com.zhokhov.dumper.data.jooq.tables.Account.ACCOUNT;
 import static com.zhokhov.jambalaya.checks.Preconditions.checkNotBlank;
+import static com.zhokhov.jambalaya.checks.Preconditions.checkNotEmpty;
 import static com.zhokhov.jambalaya.checks.Preconditions.checkNotNull;
 
 @Singleton
@@ -32,6 +34,13 @@ public class AccountRepository {
         checkNotNull(id, "id");
 
         return dslContext.fetchOptional(ACCOUNT, ACCOUNT.ID.eq(id));
+    }
+
+    @ReadOnly
+    public List<AccountRecord> findAllByIdIn(@NonNull Collection<Long> ids) {
+        checkNotEmpty(ids, "ids");
+
+        return dslContext.fetch(ACCOUNT, ACCOUNT.ID.in(ids));
     }
 
     @ReadOnly

@@ -62,7 +62,7 @@ input ExportDeclarationCreateInput {
 input ExportItemInput {
   sourceTableName: String!
   sourcePrimaryKey: [FieldValueInput!]!
-  overrideValues: [FieldValueInput!]!
+  overrideValues: [FieldValueInput!]
 }
 
 input FieldValueInput {

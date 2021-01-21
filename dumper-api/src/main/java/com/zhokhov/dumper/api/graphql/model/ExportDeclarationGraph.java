@@ -15,23 +15,19 @@ public class ExportDeclarationGraph extends AbstractPersistentEntity<Long, Expor
     }
 
     public LocalDateTime date() {
-        throw new UnsupportedOperationException();
-    }
-
-    public UserGraph exporter() {
-        throw new UnsupportedOperationException();
+        return getEntity().getDate();
     }
 
     public ExportDeclarationStatus status() {
-        throw new UnsupportedOperationException();
+        return getEntity().getStatus();
     }
 
     public String description() {
-        throw new UnsupportedOperationException();
+        return getEntity().getDescription();
     }
 
     public ExportDeclarationDestination destination() {
-        throw new UnsupportedOperationException();
+        return getEntity().getDestination();
     }
 
 }

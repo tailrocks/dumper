@@ -1,0 +1,22 @@
+mutation exportDeclarationCreate($input: ExportDeclarationCreateInput!) {
+  exportDeclarationCreate(input: $input) {
+    data {
+      date
+      exporter {
+        username
+        email
+        firstName
+        lastName
+      }
+      status
+      description
+      destination
+    }
+    error {
+      ... on SecurityError {
+        code
+        message
+      }
+    }
+  }
+}
