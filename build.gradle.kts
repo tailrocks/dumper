@@ -69,6 +69,7 @@ allprojects {
             removeUnusedImports()
             trimTrailingWhitespace()
             endWithNewline()
+            targetExclude("**/generated/**")
         }
         kotlin {
             licenseHeaderFile("$rootDir/gradle/licenseHeader.txt")
