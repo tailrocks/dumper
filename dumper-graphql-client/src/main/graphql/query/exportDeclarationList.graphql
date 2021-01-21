@@ -1,0 +1,22 @@
+query exportDeclarationList {
+  exportDeclarationList {
+    data {
+      date
+      exporter {
+        username
+        email
+        firstName
+        lastName
+      }
+      status
+      description
+      destination
+    }
+    error {
+      ... on SecurityError {
+        code
+        message
+      }
+    }
+  }
+}

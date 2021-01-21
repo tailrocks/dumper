@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import javax.inject.Singleton;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import static com.zhokhov.dumper.data.jooq.tables.ExportDeclaration.EXPORT_DECLARATION;
@@ -36,6 +37,11 @@ public class ExportDeclarationRepository {
         checkPositive(id, "id");
 
         return dslContext.fetchOptional(EXPORT_DECLARATION, EXPORT_DECLARATION.ID.eq(id));
+    }
+
+    @ReadOnly
+    public List<ExportDeclarationRecord> findAll() {
+        return dslContext.fetch(EXPORT_DECLARATION);
     }
 
     @Transactional
