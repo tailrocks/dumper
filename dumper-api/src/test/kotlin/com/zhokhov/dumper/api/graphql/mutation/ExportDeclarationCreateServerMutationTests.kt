@@ -15,7 +15,6 @@
  */
 package com.zhokhov.dumper.api.graphql.mutation
 
-import com.zhokhov.dumper.graphql.client.mutation.DatabaseCreateMutation
 import com.zhokhov.dumper.graphql.client.mutation.ExportDeclarationCreateMutation
 import com.zhokhov.dumper.graphql.client.type.ExportDeclarationCreateInput
 import com.zhokhov.dumper.graphql.client.type.ExportDeclarationDestination
@@ -75,7 +74,7 @@ class ExportDeclarationCreateServerMutationTests : AbstractTest() {
             assertNotNull(data).apply {
                 assertNotNull(exportDeclarationCreate()).apply {
                     assertNotNull(error()).let {
-                        assertTrue(it is DatabaseCreateMutation.AsSecurityError).apply {
+                        assertTrue(it is ExportDeclarationCreateMutation.AsSecurityError).apply {
                             assertEquals(SecurityErrorCode.UNAUTHORIZED, it.code())
                         }
                     }
