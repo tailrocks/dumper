@@ -12,6 +12,10 @@ buildscript {
     }
 }
 
+micronaut {
+    version(Versions.micronaut)
+}
+
 dependencies {
     // Micronaut
     api("io.micronaut.flyway:micronaut-flyway")

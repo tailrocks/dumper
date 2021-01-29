@@ -2,7 +2,7 @@ object Versions {
 
     // Languages
 
-    const val kotlin = "1.4.21"
+    const val kotlin = "1.4.21-2"
 
     // Gradle plugins
 
@@ -34,25 +34,25 @@ object Versions {
     const val gradleShadowPlugin = "6.1.0"
 
     // https://plugins.gradle.org/plugin/io.micronaut.application
-    const val gradleMicronautPlugin = "1.2.0"
+    const val gradleMicronautPlugin = "1.3.2"
 
     // Libraries
 
-    const val micronaut = "2.2.3"
+    const val micronaut = "2.3.0"
 
     // UPDATE together with Micronaut
-    // https://repo1.maven.org/maven2/io/micronaut/micronaut-bom/2.2.3/micronaut-bom-2.2.3.pom
-    // https://repo1.maven.org/maven2/io/micronaut/sql/micronaut-jooq/3.3.5/micronaut-jooq-3.3.5.pom
+    // https://repo1.maven.org/maven2/io/micronaut/micronaut-bom/2.3.0/micronaut-bom-2.3.0.pom
+    // https://repo1.maven.org/maven2/io/micronaut/sql/micronaut-jooq/3.4.0/micronaut-jooq-3.4.0.pom
     // https://repo1.maven.org/maven2/io/grpc/grpc-bom/1.33.1/grpc-bom-1.33.1.pom
     // https://repo1.maven.org/maven2/io/grpc/grpc-protobuf/1.33.1/grpc-protobuf-1.33.1.pom
     const val postgresql = "42.2.18"
     const val grpc = "1.33.1"
-    const val flyway = "7.0.4"
+    const val flyway = "7.4.0"
     const val jooq = "3.14.4"
     const val protobuf = "3.14.0"
     const val spotbugs = "4.0.3"
     const val slf4j = "1.7.26"
-    const val picocli = "4.5.2"
+    const val picocli = "4.6.1"
     // end
 
     const val spotbugsAnnotations = "4.2.0"
