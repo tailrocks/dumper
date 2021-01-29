@@ -6,6 +6,9 @@ object Versions {
 
     // Gradle plugins
 
+    // https://plugins.gradle.org/plugin/com.github.ben-manes.versions
+    const val gradleVersionsPlugin = "0.36.0"
+
     // https://plugins.gradle.org/plugin/com.adarshr.test-logger
     const val gradleTestLoggerPlugin = "2.1.1"
 
@@ -25,7 +28,7 @@ object Versions {
     const val gradleGitPropertiesPlugin = "2.2.4"
 
     // https://plugins.gradle.org/plugin/com.apollographql.apollo
-    const val gradleApolloPlugin = "2.4.6"
+    const val gradleApolloPlugin = "2.5.2"
 
     // https://plugins.gradle.org/plugin/com.github.johnrengelman.shadow
     const val gradleShadowPlugin = "6.1.0"
@@ -57,7 +60,7 @@ object Versions {
     const val slugify = "2.4"
     const val graphQlDateTime = "3.0.0"
     const val graphQlTools = "11.0.0"
-    const val apollo = "2.4.6"
+    const val apollo = "2.5.2"
 
     const val jambalayaChecks = "0.1.4"
     const val jambalayaChecksJooq = "0.1.0"
