@@ -2,6 +2,7 @@ rootProject.name = "dumper"
 
 include(
         // libraries
+        ":dumper-api-interface",
         ":dumper-data",
         ":dumper-data-repositories",
         ":dumper-graphql-client",
