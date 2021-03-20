@@ -5,15 +5,32 @@ plugins {
 
 tasks.named<io.github.kobylynskyi.graphql.codegen.gradle.GraphQLCodegenGradleTask>("graphqlCodegen") {
     graphqlSchemaPaths = listOf(
-        "$projectDir/../dumper-api/src/main/resources/graphql/dumper.graphqls",
-        "$projectDir/../dumper-api/src/main/resources/graphql/include/dumper-enums.graphqls",
-        "$projectDir/../dumper-api/src/main/resources/graphql/include/dumper-errors.graphqls",
-        "$projectDir/../dumper-api/src/main/resources/graphql/include/dumper-inputs.graphqls",
-        "$projectDir/../dumper-api/src/main/resources/graphql/include/dumper-payloads.graphqls",
-        "$projectDir/../dumper-api/src/main/resources/graphql/include/dumper-types.graphqls"
+        "$projectDir/src/main/resources/graphql/dumper.graphqls",
+        "$projectDir/src/main/resources/graphql/include/dumper-enums.graphqls",
+        "$projectDir/src/main/resources/graphql/include/dumper-errors.graphqls",
+        "$projectDir/src/main/resources/graphql/include/dumper-inputs.graphqls",
+        "$projectDir/src/main/resources/graphql/include/dumper-payloads.graphqls",
+        "$projectDir/src/main/resources/graphql/include/dumper-types.graphqls"
     )
     outputDir = File("$buildDir/generated")
-    packageName = "com.example.graphql.model"
+    apiPackageName = "com.zhokhov.dumper.graphql.api"
+    modelPackageName = "com.zhokhov.dumper.graphql.model"
+    customTypesMapping = mutableMapOf(Pair("LocalDateTime", "java.time.LocalDateTime"))
+    parentInterfaces {
+        queryResolver = "graphql.kickstart.tools.GraphQLQueryResolver"
+        mutationResolver = "graphql.kickstart.tools.GraphQLMutationResolver"
+        subscriptionResolver = "graphql.kickstart.tools.GraphQLSubscriptionResolver"
+        resolver = "graphql.kickstart.tools.GraphQLResolver<{{TYPE}}>"
+    }
+    generateApis = true
+    generateBuilder = false
+    generateEqualsAndHashCode = false
+    generateDataFetchingEnvironmentArgumentInApis = true
+    generateToString = true
+    fieldsWithResolvers = setOf("@resolver")
+    modelValidationAnnotation = "edu.umd.cs.findbugs.annotations.NonNull"
+    apiRootInterfaceStrategy = com.kobylynskyi.graphql.codegen.model.ApiRootInterfaceStrategy.DO_NOT_GENERATE
+    apiReturnType = "java.util.concurrent.CompletionStage"
 }
 
 sourceSets {
