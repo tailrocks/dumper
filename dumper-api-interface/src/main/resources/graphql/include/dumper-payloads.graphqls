@@ -9,17 +9,17 @@ type UserCurrentPayload {
 
 type UserListPayload {
   data: [User!]
-    error: UserListPayloadError
+  error: UserListPayloadError
 }
 
 type DatabaseListPayload {
-    data: [Database!]
-    error: DatabaseListPayloadError
+  data: [Database!]
+  error: DatabaseListPayloadError
 }
 
 type TableListPayload {
-    data: [Table!]
-    error: TableListPayloadError
+  data: [Table!]
+  error: TableListPayloadError
 }
 
 type TablePayload {
@@ -33,8 +33,8 @@ type TableContentPayload {
 }
 
 type ExportDeclarationListPayload {
-    data: [ExportDeclaration!]
-    error: ExportDeclarationListError
+  data: [ExportDeclaration!]
+  error: ExportDeclarationListError
 }
 
 ## Mutation
