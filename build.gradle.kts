@@ -81,13 +81,6 @@ allprojects {
     tasks.withType<JavaCompile> {
         options.release.set(11)
     }
-
-    configurations.all {
-        resolutionStrategy {
-            force("com.graphql-java:graphql-java:15.0")
-            force("org.antlr:antlr4-runtime:4.7.2")
-        }
-    }
 }
 
 // TODO
