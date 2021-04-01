@@ -1,4 +1,3 @@
-import com.jfrog.bintray.gradle.BintrayExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.io.BufferedReader
 
@@ -17,7 +16,6 @@ plugins {
     `maven-publish`
     id("com.adarshr.test-logger") version Versions.gradleTestLoggerPlugin apply false
     id("net.rdrei.android.buildtimetracker") version Versions.gradleBuildTimeTrackerPlugin
-    id("com.jfrog.bintray") version Versions.gradleBintrayPlugin apply false
     id("com.diffplug.spotless") version Versions.gradleSpotlessPlugin
     id("com.gorylenko.gradle-git-properties") version Versions.gradleGitPropertiesPlugin apply false
     id("com.apollographql.apollo") version Versions.gradleApolloPlugin apply false
@@ -62,7 +60,6 @@ allprojects {
         mavenLocal()
         jcenter()
         mavenCentral()
-        maven { url = uri("https://dl.bintray.com/expatiat/jambalaya") }
     }
 
     spotless {
@@ -115,7 +112,6 @@ subprojects {
     if (publishingProjects.contains(project.name)) {
         apply(plugin = "java-library")
         apply(plugin = "maven-publish")
-        apply(plugin = "com.jfrog.bintray")
     }
 
     version = gitVersion
@@ -149,21 +145,6 @@ subprojects {
                         }
                     }
                 }
-            }
-        }
-
-        configure<BintrayExtension> {
-            user = System.getenv("BINTRAY_USER")
-            key = System.getenv("BINTRAY_KEY")
-            publish = true
-            override = true
-            setPublications("mavenJava")
-            pkg.apply {
-                repo = "dumper"
-                name = "dumper"
-                userOrg = "expatiat"
-                vcsUrl = "https://github.com/expatiat/dumper.git"
-                setLicenses("Apache-2.0")
             }
         }
     }

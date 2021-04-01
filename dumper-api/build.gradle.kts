@@ -61,11 +61,11 @@ dependencies {
     implementation("com.graphql-java:graphql-java:15.0")
 
     // Jambalaya
-    implementation("com.zhokhov.jambalaya:jambalaya-graphql:${Versions.jambalayaGraphql}")
-    implementation("com.zhokhov.jambalaya:jambalaya-graphql-jooq:${Versions.jambalayaGraphqlJooq}")
-    implementation("com.zhokhov.jambalaya:jambalaya-micronaut-graphql:${Versions.jambalayaMicronautGraphql}")
-    testImplementation("com.zhokhov.jambalaya:jambalaya-graphql-apollo:${Versions.jambalayaGraphqlApollo}")
-    testImplementation("com.zhokhov.jambalaya:jambalaya-kotlin-test:${Versions.jambalayaKotlinTest}")
+    implementation("io.github.expatiat.jambalaya:jambalaya-graphql:${Versions.jambalayaGraphql}")
+    implementation("io.github.expatiat.jambalaya:jambalaya-graphql-jooq:${Versions.jambalayaGraphqlJooq}")
+    implementation("io.github.expatiat.jambalaya:jambalaya-micronaut-graphql:${Versions.jambalayaMicronautGraphql}")
+    testImplementation("io.github.expatiat.jambalaya:jambalaya-graphql-apollo:${Versions.jambalayaGraphqlApollo}")
+    testImplementation("io.github.expatiat.jambalaya:jambalaya-kotlin-test:${Versions.jambalayaKotlinTest}")
 
     // libraries
     implementation("at.favre.lib:bcrypt:0.9.0") // TODO

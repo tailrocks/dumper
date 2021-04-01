@@ -26,7 +26,7 @@ dependencies {
     // @end TODO remove me later
 
     // Jambalaya
-    implementation("com.zhokhov.jambalaya:jambalaya-checks:${Versions.jambalayaChecks}")
+    implementation("io.github.expatiat.jambalaya:jambalaya-checks:${Versions.jambalayaChecks}")
 
     // GraalVM
     compileOnly("org.graalvm.nativeimage:svm")

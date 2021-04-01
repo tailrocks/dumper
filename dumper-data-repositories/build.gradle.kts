@@ -22,8 +22,8 @@ dependencies {
     api("io.micronaut.data:micronaut-data-model")
 
     // Jambalaya
-    api("com.zhokhov.jambalaya:jambalaya-checks:${Versions.jambalayaChecks}")
-    api("com.zhokhov.jambalaya:jambalaya-checks-jooq:${Versions.jambalayaChecksJooq}")
+    api("io.github.expatiat.jambalaya:jambalaya-checks:${Versions.jambalayaChecks}")
+    api("io.github.expatiat.jambalaya:jambalaya-checks-jooq:${Versions.jambalayaChecksJooq}")
 
     // libraries
     // TODO https://github.com/micronaut-projects/micronaut-starter/issues/497 (Micronaut 2.3.x)

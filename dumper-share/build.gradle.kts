@@ -13,7 +13,7 @@ micronaut {
 
 dependencies {
     // Jambalaya
-    implementation("com.zhokhov.jambalaya:jambalaya-checks:${Versions.jambalayaChecks}")
+    implementation("io.github.expatiat.jambalaya:jambalaya-checks:${Versions.jambalayaChecks}")
 
     // Jackson
     // TODO version
