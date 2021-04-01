@@ -1,15 +1,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.io.BufferedReader
 
-buildscript {
-    repositories {
-        mavenLocal()
-        gradlePluginPortal()
-        jcenter()
-        mavenCentral()
-    }
-}
-
 plugins {
     java
     idea
@@ -54,12 +45,6 @@ allprojects {
             isDownloadJavadoc = false
             isDownloadSources = false
         }
-    }
-
-    repositories {
-        mavenLocal()
-        jcenter()
-        mavenCentral()
     }
 
     spotless {

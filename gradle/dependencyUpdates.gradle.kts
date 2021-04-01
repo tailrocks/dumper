@@ -4,8 +4,6 @@ buildscript {
     repositories {
         mavenLocal()
         gradlePluginPortal()
-        jcenter()
-        mavenCentral()
     }
     dependencies {
         classpath("com.github.ben-manes:gradle-versions-plugin:${Versions.gradleVersionsPlugin}")
