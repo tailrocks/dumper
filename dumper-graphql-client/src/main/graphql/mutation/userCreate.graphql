@@ -1,16 +1,16 @@
 mutation userCreate($input: UserCreateInput!) {
-    userCreate(input: $input) {
-        data {
-            username
-            email
-            firstName
-            lastName
-        }
-        error {
-            ... on SecurityError {
-                code
-                message
-            }
-        }
+  userCreate(input: $input) {
+    data {
+      username
+      email
+      firstName
+      lastName
     }
+    error {
+      ... on SecurityError {
+        code
+        message
+      }
+    }
+  }
 }

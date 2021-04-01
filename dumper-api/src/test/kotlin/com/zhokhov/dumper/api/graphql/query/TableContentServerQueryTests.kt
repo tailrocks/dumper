@@ -24,37 +24,34 @@ import com.zhokhov.dumper.test.ProdDataTestService
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.junit.jupiter.api.Test
 import javax.inject.Inject
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
+import kotlin.test.*
 
 @MicronautTest(transactional = false)
 class TableContentServerQueryTests : AbstractTest() {
 
-    @Inject lateinit var prodDataTestService: ProdDataTestService
+    @Inject
+    lateinit var prodDataTestService: ProdDataTestService
 
     @Test
     fun `not authorized`() {
         /** WHEN **/
         val tableContentResult = graphQlClient.blockingQuery(
-                TableContentQuery.builder()
-                        .input(
-                                TableContentInput.builder()
-                                        .databaseName("example")
-                                        .tableName("account")
-                                        .filters(
-                                                listOf(
-                                                        TableContentFilterInput.builder()
-                                                                .field("id")
-                                                                .value("1")
-                                                                .build()
-                                                )
-                                        )
-                                        .build()
+            TableContentQuery.builder()
+                .input(
+                    TableContentInput.builder()
+                        .databaseName("example")
+                        .tableName("account")
+                        .filters(
+                            listOf(
+                                TableContentFilterInput.builder()
+                                    .field("id")
+                                    .value("1")
+                                    .build()
+                            )
                         )
                         .build()
+                )
+                .build()
         )
 
         /** THEN **/
@@ -82,22 +79,22 @@ class TableContentServerQueryTests : AbstractTest() {
 
         /** WHEN **/
         val tableContentResult = graphQlClient.blockingQuery(
-                TableContentQuery.builder()
-                        .input(
-                                TableContentInput.builder()
-                                        .databaseName("example")
-                                        .tableName("account")
-                                        .filters(
-                                                listOf(
-                                                        TableContentFilterInput.builder()
-                                                                .field("id")
-                                                                .value("1")
-                                                                .build()
-                                                )
-                                        )
-                                        .build()
+            TableContentQuery.builder()
+                .input(
+                    TableContentInput.builder()
+                        .databaseName("example")
+                        .tableName("account")
+                        .filters(
+                            listOf(
+                                TableContentFilterInput.builder()
+                                    .field("id")
+                                    .value("1")
+                                    .build()
+                            )
                         )
                         .build()
+                )
+                .build()
         )
 
         /** THEN **/

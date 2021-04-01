@@ -21,11 +21,7 @@ import com.zhokhov.dumper.graphql.client.type.UserCreateInput
 import com.zhokhov.dumper.test.AbstractTest
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.junit.jupiter.api.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
+import kotlin.test.*
 
 @MicronautTest(transactional = false)
 class UserCreateServerMutationTests : AbstractTest() {
@@ -34,17 +30,17 @@ class UserCreateServerMutationTests : AbstractTest() {
     fun `not authorized`() {
         /** WHEN **/
         val userCreateResult = graphQlClient.blockingMutate(
-                UserCreateMutation.builder()
-                        .input(
-                                UserCreateInput.builder()
-                                        .username("test")
-                                        .password("test")
-                                        .email("test@test.com")
-                                        .firstName("test")
-                                        .lastName("test")
-                                        .build()
-                        )
+            UserCreateMutation.builder()
+                .input(
+                    UserCreateInput.builder()
+                        .username("test")
+                        .password("test")
+                        .email("test@test.com")
+                        .firstName("test")
+                        .lastName("test")
                         .build()
+                )
+                .build()
         )
 
         /** THEN **/
@@ -69,17 +65,17 @@ class UserCreateServerMutationTests : AbstractTest() {
 
         /** WHEN **/
         val userCreateResult = graphQlClient.blockingMutate(
-                UserCreateMutation.builder()
-                        .input(
-                                UserCreateInput.builder()
-                                        .username("vasya")
-                                        .password("test")
-                                        .email("vasya@test.com")
-                                        .firstName("Vasilij")
-                                        .lastName("Myasov")
-                                        .build()
-                        )
+            UserCreateMutation.builder()
+                .input(
+                    UserCreateInput.builder()
+                        .username("vasya")
+                        .password("test")
+                        .email("vasya@test.com")
+                        .firstName("Vasilij")
+                        .lastName("Myasov")
                         .build()
+                )
+                .build()
         )
 
         /** THEN **/

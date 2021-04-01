@@ -21,11 +21,7 @@ import com.zhokhov.dumper.graphql.client.type.SecurityErrorCode
 import com.zhokhov.dumper.test.AbstractTest
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.junit.jupiter.api.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
+import kotlin.test.*
 
 @MicronautTest(transactional = false)
 class DatabaseCreateServerMutationTests : AbstractTest() {
@@ -34,20 +30,20 @@ class DatabaseCreateServerMutationTests : AbstractTest() {
     fun `not authorized`() {
         /** WHEN **/
         val databaseCreateResult = graphQlClient.blockingMutate(
-                DatabaseCreateMutation.builder()
-                        .input(
-                                DatabaseCreateInput.builder()
-                                        .name("polusharie")
-                                        .host("127.0.0.1")
-                                        .port(5432)
-                                        .username("postgres")
-                                        .password("")
-                                        .dbname("polusharie")
-                                        .environment("prod")
-                                        .description("Prod database")
-                                        .build()
-                        )
+            DatabaseCreateMutation.builder()
+                .input(
+                    DatabaseCreateInput.builder()
+                        .name("polusharie")
+                        .host("127.0.0.1")
+                        .port(5432)
+                        .username("postgres")
+                        .password("")
+                        .dbname("polusharie")
+                        .environment("prod")
+                        .description("Prod database")
                         .build()
+                )
+                .build()
         )
 
         /** THEN **/
@@ -72,20 +68,20 @@ class DatabaseCreateServerMutationTests : AbstractTest() {
 
         /** WHEN **/
         var databaseCreateResult = graphQlClient.blockingMutate(
-                DatabaseCreateMutation.builder()
-                        .input(
-                                DatabaseCreateInput.builder()
-                                        .name("polusharie")
-                                        .host("127.0.0.1")
-                                        .port(5432)
-                                        .username("postgres")
-                                        .password("")
-                                        .dbname("polusharie")
-                                        .environment("prod")
-                                        .description("Prod database")
-                                        .build()
-                        )
+            DatabaseCreateMutation.builder()
+                .input(
+                    DatabaseCreateInput.builder()
+                        .name("polusharie")
+                        .host("127.0.0.1")
+                        .port(5432)
+                        .username("postgres")
+                        .password("")
+                        .dbname("polusharie")
+                        .environment("prod")
+                        .description("Prod database")
                         .build()
+                )
+                .build()
         )
 
         /** THEN **/
@@ -111,20 +107,20 @@ class DatabaseCreateServerMutationTests : AbstractTest() {
         /** WHEN **/
         // add another environment
         databaseCreateResult = graphQlClient.blockingMutate(
-                DatabaseCreateMutation.builder()
-                        .input(
-                                DatabaseCreateInput.builder()
-                                        .mainDatabaseName("polusharie")
-                                        .host("127.0.0.2")
-                                        .port(5432)
-                                        .username("postgres")
-                                        .password("")
-                                        .dbname("polusharie")
-                                        .environment("stage")
-                                        .description("Stage database")
-                                        .build()
-                        )
+            DatabaseCreateMutation.builder()
+                .input(
+                    DatabaseCreateInput.builder()
+                        .mainDatabaseName("polusharie")
+                        .host("127.0.0.2")
+                        .port(5432)
+                        .username("postgres")
+                        .password("")
+                        .dbname("polusharie")
+                        .environment("stage")
+                        .description("Stage database")
                         .build()
+                )
+                .build()
         )
 
         /** THEN **/

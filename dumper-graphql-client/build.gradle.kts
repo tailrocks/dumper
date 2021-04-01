@@ -19,11 +19,11 @@ apollo {
     }
 
     customTypeMapping.set(
-            mapOf(
-                    "LocalDate" to "java.time.LocalDate",
-                    "LocalDateTime" to "java.time.LocalDateTime",
-                    "Long" to "java.lang.Long"
-            )
+        mapOf(
+            "LocalDate" to "java.time.LocalDate",
+            "LocalDateTime" to "java.time.LocalDateTime",
+            "Long" to "java.lang.Long"
+        )
     )
 }
 
@@ -61,17 +61,17 @@ task("generateGraphQLSchema", Exec::class) {
     file("$projectDir/src/main/graphql").mkdirs()
 
     commandLine(
-            apolloCodegenCmd,
-            "introspect-schema",
-            createTempFile().apply {
-                deleteOnExit()
-                writeText(
-                        fileTree("$rootDir/dumper-api/src/main/resources/graphql/")
-                                .filter { it.extension == "graphqls" }
-                                .files.joinToString("\n") { it.readText(UTF_8) }
-                )
-            }.absolutePath,
-            "--output",
-            file("$projectDir/src/main/graphql/schema.json").absolutePath
+        apolloCodegenCmd,
+        "introspect-schema",
+        createTempFile().apply {
+            deleteOnExit()
+            writeText(
+                fileTree("$rootDir/dumper-api/src/main/resources/graphql/")
+                    .filter { it.extension == "graphqls" }
+                    .files.joinToString("\n") { it.readText(UTF_8) }
+            )
+        }.absolutePath,
+        "--output",
+        file("$projectDir/src/main/graphql/schema.json").absolutePath
     )
 }

@@ -20,11 +20,7 @@ import com.zhokhov.dumper.graphql.client.type.SecurityErrorCode
 import com.zhokhov.dumper.test.AbstractTest
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.junit.jupiter.api.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
+import kotlin.test.*
 
 @MicronautTest(transactional = false)
 class DatabaseListServerQueryTests : AbstractTest() {
@@ -33,7 +29,7 @@ class DatabaseListServerQueryTests : AbstractTest() {
     fun `not authorized`() {
         /** WHEN **/
         val databaseListResult = graphQlClient.blockingQuery(
-                DatabaseListQuery.builder().build()
+            DatabaseListQuery.builder().build()
         )
 
         /** THEN **/
@@ -59,7 +55,7 @@ class DatabaseListServerQueryTests : AbstractTest() {
 
         /** WHEN **/
         val databaseListResult = graphQlClient.blockingQuery(
-                DatabaseListQuery.builder().build()
+            DatabaseListQuery.builder().build()
         )
 
         /** THEN **/

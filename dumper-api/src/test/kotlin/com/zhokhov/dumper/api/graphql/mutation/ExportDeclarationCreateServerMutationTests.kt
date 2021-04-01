@@ -27,45 +27,42 @@ import com.zhokhov.dumper.test.ProdDataTestService
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.junit.jupiter.api.Test
 import javax.inject.Inject
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
+import kotlin.test.*
 
 @MicronautTest(transactional = false)
 class ExportDeclarationCreateServerMutationTests : AbstractTest() {
 
-    @Inject lateinit var prodDataTestService: ProdDataTestService
+    @Inject
+    lateinit var prodDataTestService: ProdDataTestService
 
     @Test
     fun `not authorized`() {
         /** WHEN **/
         val exportDeclarationCreateResult = graphQlClient.blockingMutate(
-                ExportDeclarationCreateMutation.builder()
-                        .input(
-                                ExportDeclarationCreateInput.builder()
-                                        .description("Test")
-                                        .destination(ExportDeclarationDestination.JSON)
-                                        .sourceDatabaseName("test")
-                                        .items(
-                                                listOf(
-                                                        ExportItemInput.builder()
-                                                                .sourceTableName("account")
-                                                                .sourcePrimaryKey(
-                                                                        listOf(
-                                                                                FieldValueInput.builder()
-                                                                                        .field("id")
-                                                                                        .value("1")
-                                                                                        .build()
-                                                                        )
-                                                                )
-                                                                .build()
-                                                )
+            ExportDeclarationCreateMutation.builder()
+                .input(
+                    ExportDeclarationCreateInput.builder()
+                        .description("Test")
+                        .destination(ExportDeclarationDestination.JSON)
+                        .sourceDatabaseName("test")
+                        .items(
+                            listOf(
+                                ExportItemInput.builder()
+                                    .sourceTableName("account")
+                                    .sourcePrimaryKey(
+                                        listOf(
+                                            FieldValueInput.builder()
+                                                .field("id")
+                                                .value("1")
+                                                .build()
                                         )
-                                        .build()
+                                    )
+                                    .build()
+                            )
                         )
                         .build()
+                )
+                .build()
         )
 
         /** THEN **/
@@ -93,30 +90,30 @@ class ExportDeclarationCreateServerMutationTests : AbstractTest() {
 
         /** WHEN **/
         val exportDeclarationCreateResult = graphQlClient.blockingMutate(
-                ExportDeclarationCreateMutation.builder()
-                        .input(
-                                ExportDeclarationCreateInput.builder()
-                                        .description("Export Account #1")
-                                        .destination(ExportDeclarationDestination.JSON)
-                                        .sourceDatabaseName("example")
-                                        .items(
-                                                listOf(
-                                                        ExportItemInput.builder()
-                                                                .sourceTableName("account")
-                                                                .sourcePrimaryKey(
-                                                                        listOf(
-                                                                                FieldValueInput.builder()
-                                                                                        .field("id")
-                                                                                        .value("1")
-                                                                                        .build()
-                                                                        )
-                                                                )
-                                                                .build()
-                                                )
+            ExportDeclarationCreateMutation.builder()
+                .input(
+                    ExportDeclarationCreateInput.builder()
+                        .description("Export Account #1")
+                        .destination(ExportDeclarationDestination.JSON)
+                        .sourceDatabaseName("example")
+                        .items(
+                            listOf(
+                                ExportItemInput.builder()
+                                    .sourceTableName("account")
+                                    .sourcePrimaryKey(
+                                        listOf(
+                                            FieldValueInput.builder()
+                                                .field("id")
+                                                .value("1")
+                                                .build()
                                         )
-                                        .build()
+                                    )
+                                    .build()
+                            )
                         )
                         .build()
+                )
+                .build()
         )
 
         /** THEN **/

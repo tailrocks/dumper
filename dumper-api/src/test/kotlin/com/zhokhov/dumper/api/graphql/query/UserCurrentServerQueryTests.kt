@@ -32,7 +32,7 @@ class UserCurrentServerQueryTests : AbstractTest() {
     fun `not authorized`() {
         /** WHEN **/
         val userCurrentResult = graphQlClient.blockingQuery(
-                UserCurrentQuery.builder().build()
+            UserCurrentQuery.builder().build()
         )
 
         /** THEN **/

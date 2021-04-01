@@ -36,14 +36,14 @@ class UserLoginServerMutationTests : AbstractTest() {
 
         /** WHEN **/
         val userLoginResult = graphQlClient.blockingMutate(
-                UserLoginMutation.builder()
-                        .input(
-                                UserLoginInput.builder()
-                                        .username("test")
-                                        .password("test")
-                                        .build()
-                        )
+            UserLoginMutation.builder()
+                .input(
+                    UserLoginInput.builder()
+                        .username("test")
+                        .password("test")
                         .build()
+                )
+                .build()
         )
 
         /** THEN **/
@@ -64,7 +64,7 @@ class UserLoginServerMutationTests : AbstractTest() {
 
         /** WHEN **/
         val userCurrentResult = graphQlClient.blockingQuery(
-                UserCurrentQuery.builder().build()
+            UserCurrentQuery.builder().build()
         )
 
         /** THEN **/

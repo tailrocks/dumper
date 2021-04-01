@@ -20,11 +20,7 @@ import com.zhokhov.dumper.graphql.client.type.SecurityErrorCode
 import com.zhokhov.dumper.test.AbstractTest
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.junit.jupiter.api.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
+import kotlin.test.*
 
 @MicronautTest(transactional = false)
 class UserLogoutServerMutationTests : AbstractTest() {
@@ -33,8 +29,8 @@ class UserLogoutServerMutationTests : AbstractTest() {
     fun `not authorized`() {
         /** WHEN **/
         val userLogoutResult = graphQlClient.blockingMutate(
-                UserLogoutMutation.builder()
-                        .build()
+            UserLogoutMutation.builder()
+                .build()
         )
 
         /** THEN **/
@@ -59,8 +55,8 @@ class UserLogoutServerMutationTests : AbstractTest() {
 
         /** WHEN **/
         var userLogoutResult = graphQlClient.blockingMutate(
-                UserLogoutMutation.builder()
-                        .build()
+            UserLogoutMutation.builder()
+                .build()
         )
 
         /** THEN **/
@@ -75,8 +71,8 @@ class UserLogoutServerMutationTests : AbstractTest() {
 
         /** WHEN **/
         userLogoutResult = graphQlClient.blockingMutate(
-                UserLogoutMutation.builder()
-                        .build()
+            UserLogoutMutation.builder()
+                .build()
         )
 
         /** THEN **/

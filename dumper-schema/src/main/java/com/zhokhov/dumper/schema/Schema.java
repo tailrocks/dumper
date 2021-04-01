@@ -124,6 +124,10 @@ public final class Schema {
             return primaryKeyConstraint;
         }
 
+        private void setPrimaryKeyConstraint(String primaryKeyConstraint) {
+            this.primaryKeyConstraint = primaryKeyConstraint;
+        }
+
         private void addColumn(@NonNull String columnName, @NonNull String type, boolean userDefinedType) {
             columns.putIfAbsent(columnName, new Column(this, columnName, type, userDefinedType));
         }
@@ -136,10 +140,6 @@ public final class Schema {
             }
 
             primaryKeys.putIfAbsent(column.getName(), column);
-        }
-
-        private void setPrimaryKeyConstraint(String primaryKeyConstraint) {
-            this.primaryKeyConstraint = primaryKeyConstraint;
         }
 
     }

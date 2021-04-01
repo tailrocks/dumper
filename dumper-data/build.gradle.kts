@@ -64,8 +64,8 @@ jooq {
                         name = "org.jooq.meta.postgres.PostgresDatabase"
                         inputSchema = "public"
                         excludes = listOf(
-                                "flyway_schema_history",
-                                "pg_stat_statements"
+                            "flyway_schema_history",
+                            "pg_stat_statements"
                         ).joinToString("|")
                         recordVersionFields = "version"
                     }
@@ -104,7 +104,7 @@ sourceSets {
     main {
         java {
             srcDirs(
-                    "$buildDir/generated-src/jooq/dumper"
+                "$buildDir/generated-src/jooq/dumper"
             )
         }
     }
