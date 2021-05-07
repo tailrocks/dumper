@@ -1,6 +1,13 @@
 plugins {
     `java-library`
-    id("io.github.kobylynskyi.graphql.codegen") version "4.1.5"
+    id("io.github.kobylynskyi.graphql.codegen") version Versions.gradleGraphqlCodegenPlugin
+}
+
+dependencies {
+    implementation(platform("io.micronaut:micronaut-bom:${Versions.micronaut}"))
+    implementation("com.github.spotbugs:spotbugs-annotations")
+
+    api("com.graphql-java-kickstart:graphql-java-tools:${Versions.graphQlTools}")
 }
 
 tasks.named<io.github.kobylynskyi.graphql.codegen.gradle.GraphQLCodegenGradleTask>("graphqlCodegen") {

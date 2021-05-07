@@ -9,7 +9,9 @@ plugins {
 
 micronaut {
     version(Versions.micronaut)
+    runtime("netty")
     testRuntime("junit5")
+    enableNativeImage(false)
     processing {
         incremental(true)
         module(project.name)
@@ -22,6 +24,7 @@ dependencies {
     // subprojects
     implementation(project(":dumper-data-repositories"))
     implementation(project(":dumper-schema"))
+    implementation(project(":dumper-api-interface"))
     testImplementation(project(":dumper-graphql-client"))
 
     // Micronaut

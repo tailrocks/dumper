@@ -6,10 +6,9 @@ plugins {
     idea
     `maven-publish`
     id("com.adarshr.test-logger") version Versions.gradleTestLoggerPlugin apply false
-    id("net.rdrei.android.buildtimetracker") version Versions.gradleBuildTimeTrackerPlugin
     id("com.diffplug.spotless") version Versions.gradleSpotlessPlugin
     id("com.gorylenko.gradle-git-properties") version Versions.gradleGitPropertiesPlugin apply false
-    id("com.apollographql.apollo") version Versions.gradleApolloPlugin apply false
+    id("com.apollographql.apollo") version Versions.apollo apply false
     id("com.github.johnrengelman.shadow") version Versions.gradleShadowPlugin apply false
     id("io.micronaut.application") version Versions.gradleMicronautPlugin apply false
     id("io.micronaut.library") version Versions.gradleMicronautPlugin apply false
@@ -23,19 +22,8 @@ java {
     targetCompatibility = JavaVersion.VERSION_11
 }
 
-buildtimetracker {
-    reporters {
-        register("summary") {
-            options["ordered"] = "true"
-            options["barstyle"] = "none"
-            options["shortenTaskNames"] = "false"
-        }
-    }
-}
-
 allprojects {
     apply(plugin = "idea")
-    apply(plugin = "net.rdrei.android.buildtimetracker")
     apply(plugin = "com.diffplug.spotless")
 
     apply(from = "${project.rootDir}/gradle/dependencyUpdates.gradle.kts")
@@ -103,15 +91,6 @@ subprojects {
         withSourcesJar()
     }
 
-    dependencies {
-        // SpotBugs
-        implementation("com.github.spotbugs:spotbugs-annotations:${Versions.spotbugsAnnotations}")
-
-        // JUnit
-        testImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.junit}")
-        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.junit}")
-    }
-
     if (publishingProjects.contains(project.name)) {
         publishing {
             publications {
@@ -139,15 +118,4 @@ subprojects {
             excludeEngines = setOf("junit-vintage")
         }
     }
-
-    // TODO remove after that issue will be fixed
-    // Address https://github.com/gradle/gradle/issues/4823: Force parent project evaluation before sub-project evaluation for Kotlin build scripts
-    /*
-    if (gradle.startParameter.isConfigureOnDemand &&
-            buildscript.sourceFile?.extension?.toLowerCase() == "kts" &&
-            parent != rootProject) {
-        generateSequence(parent) { project -> project.parent.takeIf { it != rootProject } }
-                .forEach { evaluationDependsOn(it.path) }
-    }
-     */
 }
