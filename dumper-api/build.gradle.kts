@@ -60,9 +60,6 @@ dependencies {
     implementation("com.graphql-java-kickstart:graphql-java-tools:${Versions.graphQlTools}")
     implementation("com.zhokhov.graphql:graphql-java-datetime:${Versions.graphQlDateTime}")
 
-    // TODO temp workaround for overriding dependency version
-    implementation("com.graphql-java:graphql-java:15.0")
-
     // Jambalaya
     implementation("io.github.expatiat.jambalaya:jambalaya-graphql:${Versions.jambalayaGraphql}")
     implementation("io.github.expatiat.jambalaya:jambalaya-graphql-jooq:${Versions.jambalayaGraphqlJooq}")
