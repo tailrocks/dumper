@@ -17,5 +17,5 @@ dependencies {
 
     // Jackson
     // TODO version
-    implementation("com.fasterxml.jackson.core:jackson-annotations:2.12.0")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:2.13.2")
 }
