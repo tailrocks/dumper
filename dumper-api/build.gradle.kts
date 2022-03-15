@@ -69,7 +69,7 @@ dependencies {
 
     // libraries
     implementation("at.favre.lib:bcrypt:0.9.0") // TODO
-    implementation("com.google.crypto.tink:tink:1.5.0") // TODO
+    implementation("com.google.crypto.tink:tink:1.6.1") // TODO
 }
 
 gitProperties {
