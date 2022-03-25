@@ -10,5 +10,5 @@ dependencies {
     implementation("io.github.expatiat.jambalaya:jambalaya-checks:${Versions.jambalayaChecks}")
 
     // libraries
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.2")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.2.1")
 }
