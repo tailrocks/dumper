@@ -56,7 +56,7 @@ object Versions {
     const val slugify = "2.4"
     const val graphQlDateTime = "4.0.0"
     const val graphQlTools = "11.0.1"
-    const val apollo = "2.5.6"
+    const val apollo = "2.5.14"
 
     const val jambalayaChecks = "0.3.0"
     const val jambalayaChecksJooq = "0.3.0"
