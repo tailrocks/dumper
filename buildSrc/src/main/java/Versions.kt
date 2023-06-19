@@ -28,7 +28,7 @@ object Versions {
     const val gradleGraphqlCodegenPlugin = "5.1.0"
 
     // https://plugins.gradle.org/plugin/io.micronaut.application
-    const val gradleMicronautPlugin = "1.5.0"
+    const val gradleMicronautPlugin = "1.5.4"
 
     // Libraries
 
