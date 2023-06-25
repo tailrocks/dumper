@@ -68,7 +68,7 @@ dependencies {
     testImplementation("io.github.expatiat.jambalaya:jambalaya-kotlin-test:${Versions.jambalayaKotlinTest}")
 
     // libraries
-    implementation("at.favre.lib:bcrypt:0.9.0") // TODO
+    implementation("at.favre.lib:bcrypt:0.10.2") // TODO
     implementation("com.google.crypto.tink:tink:1.7.0") // TODO
 }
 
