@@ -33,7 +33,7 @@ object Versions {
     // Libraries
 
     // REMEMBER update micronautVersion in gradle.properties as well
-    const val micronaut = "2.5.1"
+    const val micronaut = "2.5.13"
 
     // UPDATE together with Micronaut
     // https://repo1.maven.org/maven2/io/micronaut/micronaut-bom/2.5.1/micronaut-bom-2.5.1.pom
